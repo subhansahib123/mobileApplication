@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "386950360770",
+    "project_id": "otp-verify-3b2c4",
+    "storage_bucket": "otp-verify-3b2c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:386950360770:android:a8108af847f7219428155b",
+        "android_client_info": {
+          "package_name": "com.drtele24"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "386950360770-fhptibdkm1a5c6eu4n2fhuubhm0pdc7o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMPe8nk5dbKkyVs9hG_wieFD1SLPLytfQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "386950360770-fhptibdkm1a5c6eu4n2fhuubhm0pdc7o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
