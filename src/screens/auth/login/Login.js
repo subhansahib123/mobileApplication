@@ -1,14 +1,16 @@
 import React, {useState, useRef} from 'react';
-import {StyleSheet, Text, TextInput, View} from 'react-native';
+import {Image, StyleSheet, Text, TextInput, View} from 'react-native';
 import {useSelector} from 'react-redux';
 
-import Button from '../../../common/Button';
-
 import PhoneInput from 'react-native-phone-number-input';
+import Button from '../../../common/Button';
 
 /// otp verification
 import auth from '@react-native-firebase/auth';
-import { useNavigation } from '@react-navigation/native';
+import {useNavigation} from '@react-navigation/native';
+
+///Image
+import verificaionCard from '../../../assets/images/verification.png';
 
 export default function Login({}) {
   const {colors} = useSelector(state => state);
@@ -19,11 +21,11 @@ export default function Login({}) {
   const [showMessage, setShowMessage] = useState(false);
   const phoneInput = useRef(null);
 
-//   /// OTP Verification
+  //   /// OTP Verification
   const [confirm, setConfirm] = useState(null);
   const [code, setCode] = useState('');
 
- const navigation =  useNavigation()
+  const navigation = useNavigation();
 
   // async function signInWithPhoneNumber(phoneNumber) {
   //   try {
@@ -41,7 +43,6 @@ export default function Login({}) {
   //   }
   // }
 
-
   return (
     <View
       style={[
@@ -49,6 +50,13 @@ export default function Login({}) {
         {backgroundColor: colors?.accent?.shadowColor},
       ]}>
       <View style={styles?.topSection}>
+        <View style={styles?.imagewrapper}>
+          <Image
+            source={verificaionCard}
+            style={styles?.image}
+            resizeMode="contain"
+          />
+        </View>
         <Text style={[styles?.topText, {color: colors?.accent?.lightDark}]}>
           Enter your mobile number we will send you the OTP to verify later
         </Text>
@@ -90,7 +98,7 @@ export default function Login({}) {
             buttonVerticalPadding={12}
             outlineColor="transparent"
             // handlePress = {()=>signInWithPhoneNumber(formattedValue)}
-            handlePress = {()=>navigation.navigate('OTP')}
+            handlePress={() => navigation.navigate('OTP')}
           />
         </View>
       </View>
@@ -103,9 +111,17 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   topSection: {
-    marginTop: '50%',
+    marginTop: '25%',
     marginHorizontal: '8%',
-    marginBottom : '15%'
+    marginBottom: '15%',
+    flexBasis: '20%',
+  },
+  imagewrapper: {
+    alignItems: 'center',
+    flex: 1,
+  },
+  image: {
+    flex: .8,
   },
   topText: {
     textAlign: 'center',
@@ -117,9 +133,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: '5%',
     borderRadius: 15,
   },
-  inputWrapper : {
-    marginTop : '3%',
-    marginBottom : '13%'
+  inputWrapper: {
+    marginTop: '3%',
+    marginBottom: '13%',
   },
   leftBox: {
     marginRight: 10,
@@ -131,7 +147,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     paddingVertical: -10,
   },
-  buttonWrapper : {
-    marginBottom : '4%'
+  buttonWrapper: {
+    marginBottom: '4%',
   },
 });

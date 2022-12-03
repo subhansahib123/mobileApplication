@@ -1,4 +1,4 @@
-import {Image, StyleSheet, Text, View} from 'react-native';
+import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {useSelector} from 'react-redux';
 import ProfilePic from '../../../assets/images/profile.jpeg';
@@ -7,9 +7,15 @@ import EntypoIcon from 'react-native-vector-icons/Entypo';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 
+/// Images
+import roundedCrossIcon from '../../../assets/images/roundedCrossIcon.png';
+import messageIcon from '../../../assets/images/message.png';
+import loudIcon from '../../../assets/images/loudIcon.png';
+import addCallerIcon from '../../../assets/images/addCaller.png';
+
 export default function CallPage({navigation}) {
   const {colors} = useSelector(state => state);
-    
+
   return (
     <View
       style={[
@@ -34,37 +40,34 @@ export default function CallPage({navigation}) {
         </Text>
       </View>
       <View style={styles?.iconsSection}>
-        <View
-          style={[
-            styles?.iconCircle,
-            {backgroundColor: colors?.secondary?.red},
-          ]}>
-          <EntypoIcon name="cross" size={40} color={colors?.accent?.white} onPress={()=>navigation.navigate('Review')}/>
+        <Pressable onPress={()=>navigation?.navigate('Review')} style={{marginBottom : '-5%'}}>
+          <Image
+            source={roundedCrossIcon}
+            resizeMode="contain"
+            style={{width: 100, height: 100}}
+          />
+        </Pressable>
+        <View style={{marginRight : 10}}>
+          <Image
+            source={messageIcon}
+            resizeMode="contain"
+            style={{width: 67, height: 67}}
+          />
         </View>
-        <View
-          style={[
-            styles?.iconCircle,
-            {backgroundColor: colors?.accent?.white},
-          ]}>
-
-          <FeatherIcon name="message-square" size={40} color={colors?.primary?.blue} />
-          </View>
-        <View
-          style={[
-              styles?.iconCircle,
-            {backgroundColor: colors?.accent?.white},
-        ]}>
-
-              <AntDesignIcon name="sound" size={40} color={colors?.gradients?.purple?.first} />
-          </View>
-        <View
-          style={[
-              styles?.iconCircle,
-              {backgroundColor: colors?.accent?.white},
-            ]}>
-              <AntDesignIcon name="adduser" size={40} color={colors?.secondary?.green} />
-
-          </View>
+        <View style={{marginRight : 10}}>
+          <Image
+            source={loudIcon}
+            resizeMode="contain"
+            style={{width: 67, height: 67}}
+          />
+        </View>
+        <View style={{marginRight : 10}}>
+          <Image
+            source={addCallerIcon}
+            resizeMode="contain"
+            style={{width: 67, height: 67}}
+          />
+        </View>
       </View>
     </View>
   );
@@ -87,21 +90,11 @@ const styles = StyleSheet.create({
     borderWidth: 1,
   },
   iconsSection: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-  },
-  iconCircle: {
-    width: 65,
-    height: 65,
-    borderRadius: 65 / 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginRight: 13,
   },
   textSection: {
     flexBasis: '8%',
     justifyContent: 'flex-start',
-    marginBottom : '6%'
+    marginBottom: '6%',
   },
   name: {
     fontSize: 27,

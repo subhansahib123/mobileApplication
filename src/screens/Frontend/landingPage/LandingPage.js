@@ -11,14 +11,19 @@ import React, {useState} from 'react';
 import BackDrop from '../../../common/BackDrop';
 import {useSelector} from 'react-redux';
 
-import FontisoIcon from 'react-native-vector-icons/Fontisto';
-import MaterialIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import FontAwesome5Icon from 'react-native-vector-icons/FontAwesome5';
-
-import bgImage from '../../../assets/images/doctor.webp';
+/// Pages
 import HospitalDemoList from './HospitalDemoList';
 import DoctorDemoList from './DoctorDemoList';
 import DepartmentDemoList from './DepartmentDemoList';
+
+// Images
+import sliderImage from '../../../assets/images/sliderImage.png';
+import hospitalIcon from "../../../assets/images/hospitalIcon.png"
+import hospitalIconSelected from "../../../assets/images/hospitalIconSelected.png"
+import doctorIcon from '../../../assets/images/doctorfillIcon.png'
+import doctorIconSelected from '../../../assets/images/doctorfillIconWhite.png'
+import departmentIcon from "../../../assets/images/departmentIcon.png"
+import departmentIconSelected from "../../../assets/images/departmentIconWhite.png"
 
 export default function LandingPage({navigation}) {
   const {colors} = useSelector(state => state);
@@ -53,7 +58,7 @@ export default function LandingPage({navigation}) {
             styles?.iconBox,
             {
               backgroundColor:
-                active == 1 ? colors?.accent?.white : colors?.primary?.violet,
+                active == 1 ? colors?.primary?.violet  : colors?.accent?.white,
               shadowColor: active == 1 ? colors?.accent?.dark : 'transparent',
               shadowOffset: {
                 width: active == 1 ? 0 : 0,
@@ -65,11 +70,7 @@ export default function LandingPage({navigation}) {
               elevation: active == 1 ? 24 : 0,
             },
           ]}>
-          <MaterialIcon
-            name="home-plus-outline"
-            size={50}
-            color={active == 1 ? colors?.accent?.dark : colors?.accent?.white}
-          />
+            <Image source={active == 1 ? hospitalIconSelected : hospitalIcon} resizeMode = 'contain' style={{flex : .55}}/>
         </Pressable>
         <Pressable
           onPress={() => {
@@ -80,7 +81,7 @@ export default function LandingPage({navigation}) {
             styles?.iconBox,
             {
               backgroundColor:
-                active == 2 ? colors?.accent?.white : colors?.primary?.violet,
+                active == 2 ? colors?.primary?.violet  : colors?.accent?.white,
               shadowColor: active == 2 ? colors?.accent?.dark : 'transparent',
               shadowOffset: {
                 width: active == 2 ? 0 : 0,
@@ -92,11 +93,7 @@ export default function LandingPage({navigation}) {
               elevation: active == 2 ? 24 : 0,
             },
           ]}>
-          <FontisoIcon
-            name="doctor"
-            size={50}
-            color={active == 2 ? colors?.accent?.dark : colors?.accent?.white}
-          />
+          <Image source={active == 2 ? doctorIconSelected : doctorIcon} resizeMode = 'contain' style={{flex : .55}}/>
         </Pressable>
         <Pressable
           onPress={() => {
@@ -107,7 +104,7 @@ export default function LandingPage({navigation}) {
             styles?.iconBox,
             {
               backgroundColor:
-                active == 3 ? colors?.accent?.white : colors?.primary?.violet,
+                active == 3 ? colors?.primary?.violet  : colors?.accent?.white,
               shadowColor: active == 3 ? colors?.accent?.dark : 'transparent',
               shadowOffset: {
                 width: active == 3 ? 0 : 0,
@@ -119,11 +116,7 @@ export default function LandingPage({navigation}) {
               elevation: active == 3 ? 24 : 0,
             },
           ]}>
-          <FontAwesome5Icon
-            name="building"
-            size={50}
-            color={active == 3 ? colors?.accent?.dark : colors?.accent?.white}
-          />
+          <Image source={active == 3 ? departmentIconSelected : departmentIcon} resizeMode = 'contain' style={{flex : .55}}/>
         </Pressable>
       </View>
 
@@ -147,10 +140,10 @@ export default function LandingPage({navigation}) {
         </View>
         <View style={styles?.textSection}>
           <Text style={[styles?.name, {color: colors?.accent?.dark}]}>
-            Departments
+            Specialization
           </Text>
           <Text style={[styles?.info, {color: colors?.accent?.grey}]}>
-            Departments around you
+           Specialists around you
           </Text>
         </View>
       </View>
@@ -174,7 +167,7 @@ export default function LandingPage({navigation}) {
                   },
                 ]}>
                 <Image
-                  source={bgImage}
+                  source={sliderImage}
                   style={{width: '100%', height: '100%', borderRadius: 10}}
                   resizeMode='cover'
                 />
@@ -206,7 +199,7 @@ export default function LandingPage({navigation}) {
                   },
                 ]}>
                 <Image
-                  source={bgImage}
+                  source={sliderImage}
                   style={{width: '100%', height: '100%', borderRadius: 10}}
                 />
               </View>
@@ -248,12 +241,12 @@ const styles = StyleSheet.create({
   },
   name: {
     textAlign: 'center',
-    fontSize: 17,
+    fontSize: 16,
     fontWeight: 'bold',
   },
   info: {
     textAlign: 'center',
-    fontSize: 13,
+    fontSize: 14,
   },
   sliderSection: {
   },

@@ -35,8 +35,9 @@ export default function MessageBoxes() {
       showsVerticalScrollIndicator={false}
       renderItem={({item}) => {
         return (
-          <Swipeable
+          <View
           renderRightActions={(progress,dragX)=>renderRightView()}
+        
           >
             <View
               style={[
@@ -45,6 +46,7 @@ export default function MessageBoxes() {
                   backgroundColor: colors?.accent?.white,
                   width: LENGHT,
                   height: HEIGHT,
+                  marginTop : item?.firstChild ? '13%' : 0
                 },
               ]}>
               <View style={styles?.topSection}>
@@ -90,7 +92,7 @@ export default function MessageBoxes() {
                 </View>
               </View>
             </View>
-          </Swipeable>
+          </View>
         );
       }}
     />

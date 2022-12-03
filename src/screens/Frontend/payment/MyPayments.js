@@ -1,6 +1,7 @@
 import {
   Dimensions,
   FlatList,
+  Image,
   ScrollView,
   StyleSheet,
   Text,
@@ -15,6 +16,11 @@ import EntypoIcon from 'react-native-vector-icons/Entypo';
 import {RadioButton} from 'react-native-paper';
 import SwipableCards from './SwipableCards';
 
+/// Images
+import crossIcon from '../../../assets/images/cross.png';
+
+
+
 export default function MyPayments({navigation}) {
   const [checked, setChecked] = useState('');
   const {colors} = useSelector(state => state);
@@ -22,7 +28,7 @@ export default function MyPayments({navigation}) {
 
   return (
     <View
-      style={[
+    style={[
         styles?.container,
         {backgroundColor: colors?.accent?.shadowColor},
       ]}>
@@ -32,7 +38,7 @@ export default function MyPayments({navigation}) {
           {backgroundColor: colors?.primary?.blue},
         ]}>
         <View style={styles?.crossIconSection}>
-          <EntypoIcon name="cross" size={40} color={colors?.accent?.white} />
+          <Image source={crossIcon} resizeMode='contain' style={{width : 22,height : 22,marginLeft : 10,marginRight : 10}}/>
           <Text style={[styles?.header, {color: colors?.accent?.white}]}>
             My Payments
           </Text>

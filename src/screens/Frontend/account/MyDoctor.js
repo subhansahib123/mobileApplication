@@ -1,9 +1,12 @@
-import { ScrollView, StyleSheet, Text, View } from 'react-native'
+import { Image, ScrollView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { useSelector } from 'react-redux';
 import BookingHistoryCard from '../../../common/BookingHistoryCard';    
 
 import EntypoIcon from 'react-native-vector-icons/Entypo'
+///Images
+import crossIcon from '../../../assets/images/cross.png';
+
 
 export default function MyDoctor() {
     const {colors} = useSelector(state => state);
@@ -12,7 +15,7 @@ export default function MyDoctor() {
       <View style={[styles?.container,{backgroundColor : colors?.accent?.shadowColor}]}>
         <View style={[styles?.backDropSection,{backgroundColor : colors?.primary?.blue}]}>
           <View style={styles?.crossIconSection}>
-          <EntypoIcon name='cross' size={40} color={colors?.accent?.white}/>
+            <Image source={crossIcon} resizeMode='contain' style={{width : 22,height : 22,marginLeft : 10,marginRight : 10}}/>
           <Text style={[styles?.header,{color : colors?.accent?.white}]}>My Doctor</Text>
           </View>
         </View>
@@ -47,6 +50,7 @@ const styles = StyleSheet.create({
         paddingHorizontal : '5%',
         marginTop : '3%',
         flex : 1,
+        position : 'relative',
         top : '-5%'
     },
 })

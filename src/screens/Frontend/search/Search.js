@@ -1,10 +1,15 @@
-import {FlatList, StyleSheet, Text, TextInput, View} from 'react-native';
+import {FlatList, Image, StyleSheet, Text, TextInput, View} from 'react-native';
 import React from 'react';
 import {useSelector} from 'react-redux';
 
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome5';
+
+/// Images 
+import SearchIcon from '../../../assets/images/searchIcon.png'
+import filterIcon from '../../../assets/images/filterIcon.png';
+import crossIcon from '../../../assets/images/cross.png'
 
 export default function Search() {
   const {colors} = useSelector(state => state);
@@ -41,27 +46,19 @@ export default function Search() {
         ]}>
         <View style={styles?.topSection}>
           <View style={styles?.cancelSection}>
-            <EntypoIcon name="cross" size={40} color={colors?.accent?.white} />
+            <Image source={crossIcon} resizeMode='contain' style={{flex : .35,marginLeft : 10,marginRight : 10}}/>
             <Text style={[styles?.text, {color: colors?.accent?.white}]}>
               Find & Book
             </Text>
           </View>
-          <AntDesignIcon
-            name="filter"
-            size={40}
-            color={colors?.accent?.white}
-          />
+          <Image source={filterIcon} resizeMode='contain' style={{flex : .2}}/>
         </View>
         <View
           style={[
             styles?.searchInputWrapper,
             {backgroundColor: colors?.accent?.white},
           ]}>
-          <FontAwesomeIcon
-            name="search"
-            size={20}
-            color={colors?.accent?.dark}
-          />
+          <Image source={SearchIcon} resizeMode='contain' style={{flex : .3}}/>
           <TextInput
             placeholder="Hospitals, Departments, Doctors"
             placeholderTextColor={colors?.accent?.grey}
@@ -126,7 +123,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingHorizontal: '4%',
     marginTop : '10%',
-    marginBottom : '3%'
+    marginBottom : '3%',
   },
   cancelSection: {
     flexDirection: 'row',

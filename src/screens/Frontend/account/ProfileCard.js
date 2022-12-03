@@ -6,6 +6,9 @@ import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import ProfilePic from '../../../assets/images/profile.jpeg';
 import Button from '../../../common/Button';
 
+/// Images
+import userIcon from '../../../assets/images/userProfile.png';
+
 export default function ProfileCard() {
   const {colors} = useSelector(state => state);
 
@@ -48,7 +51,7 @@ export default function ProfileCard() {
             buttonTextColor={colors?.accent?.white}
             buttonVerticalPadding={13}
             outlineColor={colors?.accent?.lightGrey}
-            fontSize={17}
+            fontSize={16}
             buttonWidth = {220}
           />
         </View>
@@ -84,12 +87,12 @@ const styles = StyleSheet.create({
     marginTop: '3%',
   },
   drName: {
-    fontSize: 26,
+    fontSize: 22,
     fontWeight: 'bold',
     textAlign: 'center',
   },
   number: {
-    fontSize: 17,
+    fontSize: 16,
     textAlign : 'center'
   },
   percentageSection : {

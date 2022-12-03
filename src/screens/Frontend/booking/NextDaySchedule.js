@@ -1,16 +1,23 @@
 import {Image, StyleSheet, Text, TextInput, View} from 'react-native';
-import React from 'react';
+import React,{useState} from 'react';
 import {useSelector} from 'react-redux';
 
-import EntypoIcon from 'react-native-vector-icons/Entypo';
-import AntDesignIcon from 'react-native-vector-icons/AntDesign';
-import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
-import ProfilePic from '../../../assets/images/profile.jpeg';
 import Button from '../../../common/Button';
+
+/// Images
+import progressBar from '../../../assets/images/Step1.png';
+import ProfilePic from '../../../assets/images/profile.jpeg';
+import  CalendarStrip  from 'react-native-calendar-strip';
 
 
 export default function NextDaySchedule({navigation}) {
   const {colors} = useSelector(state => state);
+  const [value,setValue] = useState()
+
+  console.log(Date);
+  const date = new Date();
+  console.log(date);
+  
 
   return (
     <View
@@ -18,26 +25,10 @@ export default function NextDaySchedule({navigation}) {
         styles?.container,
         {backgroundColor: colors?.accent?.shadowColor},
       ]}>
-      <View
-        style={[
-          styles?.backDropSection,
-          {backgroundColor: colors?.primary?.blue},
-        ]}>
-        <View style={styles?.crossIconSection}>
-          <View style={{flexDirection : 'row',alignItems : 'center'}}>
-
-          <AntDesignIcon name="arrowleft" size={30} color={colors?.accent?.white} />
-          <Text style={[styles?.header, {color: colors?.accent?.white}]}>
-            Select a time slot
-          </Text>
-          </View>
-
-          <View >
-            <Text style={{color : colors?.accent?.white}}>Country</Text>
-          </View>
+    <View style={{flexBasis : '20%',marginTop : '-19%',marginBottom : '7%'}}>
+          <Image source={progressBar} resizeMode='contain' style={{width :'100%',height : 300,zIndex : 2}}/>
         </View>
-      </View>
-      <View style={{top: '-15%'}}>
+      <View>
         <View
           style={[
             styles?.timeSlotCardWrapper,
@@ -60,7 +51,25 @@ export default function NextDaySchedule({navigation}) {
             </View>
           </View>
           <View style={[styles?.horizontalLine,{borderColor : colors?.accent?.lightGrey}]}></View>
+          <View style={{width : 250, height : 85,marginTop : '5%',marginLeft : 'auto',marginRight : 'auto'}}>
+              <CalendarStrip
+                scrollable
+                style={{flex : 1,}}
+                // startingDate= "2022-12-2"
+                dateNameStyle={{color : colors?.accent?.dark}}
+                showDate={true}
+                calendarHeaderStyle={{marginTop : '10%',fontSize : 20,color : 'black',}}
+                dateNumberStyle={{color : colors?.accent?.dark,}}
+                headerText={`Today, ${2} December`}
+                onDateSelected={val=>setValue(val)}
+                // onDateSelected={}
+                // showMonth={false}
+                // showDayName={false}
+                // showDayNumber={false}
+                // iconLeft= {require('../../../assets/images/backLeft.png')}
 
+              />
+            </View>
           <View style={[styles?.scheduleBox,{borderColor : colors?.accent?.lightGrey,backgroundColor : colors?.accent?.shadowColor      }]}>
             <View style={[styles?.badge,{backgroundColor : colors?.gradients?.lightSkyBlue?.second,borderColor : 'transparent'}]}>
                 <Text style={{color : colors?.accent?.dark}}>Morning</Text>
@@ -70,6 +79,30 @@ export default function NextDaySchedule({navigation}) {
             </View>
             <View style={styles?.lowerLine}>
                 <Text style={{color : colors?.accent?.dark,fontSize : 17}}>10.00 am - 1.00 pm</Text>
+                <Text style={{color : colors?.accent?.dark,fontSize : 17,fontWeight : 'bold'}}>$600</Text>
+            </View>
+          </View>
+          <View style={[styles?.scheduleBox,{borderColor : colors?.accent?.lightGrey,backgroundColor : colors?.accent?.shadowColor}]}>
+            <View style={[styles?.badge,{backgroundColor : colors?.gradients?.lightSkyBlue?.second,borderColor : 'transparent'}]}>
+                <Text style={{color : colors?.accent?.dark}}>Afternoon</Text>
+            </View>
+            <View style={styles?.upperLine}>
+                <Text style={{color : colors?.accent?.grey,fontSize : 15}}>Doctor Fees</Text>
+            </View>
+            <View style={styles?.lowerLine}>
+                <Text style={{color : colors?.accent?.dark,fontSize : 17}}>4.00 pm - 6.00 pm</Text>
+                <Text style={{color : colors?.accent?.dark,fontSize : 17,fontWeight : 'bold'}}>$600</Text>
+            </View>
+          </View>
+          <View style={[styles?.scheduleBox,{borderColor : colors?.accent?.lightGrey,backgroundColor : colors?.accent?.shadowColor}]}>
+            <View style={[styles?.badge,{backgroundColor : colors?.gradients?.lightSkyBlue?.second,borderColor : 'transparent',width : '50%',}]}>
+                <Text style={{color : colors?.accent?.dark}}>Evening & Night</Text>
+            </View>
+            <View style={styles?.upperLine}>
+                <Text style={{color : colors?.accent?.grey,fontSize : 15}}>Doctor Fees</Text>
+            </View>
+            <View style={styles?.lowerLine}>
+                <Text style={{color : colors?.accent?.dark,fontSize : 17}}>7.00 pm - 10.00 pm</Text>
                 <Text style={{color : colors?.accent?.dark,fontSize : 17,fontWeight : 'bold'}}>$600</Text>
             </View>
           </View>
@@ -83,7 +116,7 @@ export default function NextDaySchedule({navigation}) {
             buttonVerticalPadding={17}
             outlineColor={colors?.primary?.blue}
             fontSize={17}
-              handlePress={()=>navigation.navigate('Landing Page')}
+              handlePress={()=>navigation.navigate('Booking Review')}
           />
         </View>
       </View>
@@ -115,7 +148,7 @@ const styles = StyleSheet.create({
   timeSlotCardWrapper: {
     borderRadius: 15,
     marginHorizontal: '5%',
-    height : '70%'
+    height : '80%',
   },
   topSection: {
     flexDirection: 'row',
@@ -167,7 +200,7 @@ const styles = StyleSheet.create({
   },
   buttonsSection : {
     marginHorizontal : '5%',
-    marginTop : '20%'
+    marginTop : '8%'
   },
   horizontalLine : {
     borderBottomWidth : 1,

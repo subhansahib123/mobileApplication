@@ -7,7 +7,9 @@ import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import ProfilePic from '../../../assets/images/profile.jpeg';
 import Button from '../../../common/Button';
+import Calendar from '../../../common/Calendar';
 
+import CalendarStrip from 'react-native-calendar-strip';
 
 export default function TimeSlot({navigation}) {
   const {colors} = useSelector(state => state);
@@ -24,16 +26,19 @@ export default function TimeSlot({navigation}) {
           {backgroundColor: colors?.primary?.blue},
         ]}>
         <View style={styles?.crossIconSection}>
-          <View style={{flexDirection : 'row',alignItems : 'center'}}>
-
-          <AntDesignIcon name="arrowleft" size={30} color={colors?.accent?.white} />
-          <Text style={[styles?.header, {color: colors?.accent?.white}]}>
-            Select a time slot
-          </Text>
+          <View style={{flexDirection: 'row', alignItems: 'center'}}>
+            <AntDesignIcon
+              name="arrowleft"
+              size={30}
+              color={colors?.accent?.white}
+            />
+            <Text style={[styles?.header, {color: colors?.accent?.white}]}>
+              Select a time slot
+            </Text>
           </View>
 
-          <View >
-            <Text style={{color : colors?.accent?.white}}>Country</Text>
+          <View>
+            <Text style={{color: colors?.accent?.white}}>Country</Text>
           </View>
         </View>
       </View>
@@ -44,7 +49,7 @@ export default function TimeSlot({navigation}) {
             {backgroundColor: colors?.accent?.white},
           ]}>
           <View style={styles?.topSection}>
-            <View style={[styles?.drImage,{marginRight: 20,}]}>
+            <View style={[styles?.drImage, {marginRight: 20}]}>
               <Image
                 source={ProfilePic}
                 style={{width: '100%', height: '100%', borderRadius: 70 / 2}}
@@ -55,15 +60,32 @@ export default function TimeSlot({navigation}) {
                 Dr. Jitendra Raut
               </Text>
               <Text style={{color: colors?.accent?.grey}}>
-                B.Sc, MBBS, DDVL, MD- Dermitol... 
+                B.Sc, MBBS, DDVL, MD- Dermitol...
               </Text>
             </View>
           </View>
-          <View style={[styles?.horizontalLine,{borderColor : colors?.accent?.lightGrey}]}></View>
+          <View
+            style={[
+              styles?.horizontalLine,
+              {borderColor: colors?.accent?.lightGrey},
+            ]}></View>
 
           <View style={styles?.centeredSection}>
+            <View style={{width : 300, height : 100,marginBottom : '10%'}}>
+              <CalendarStrip
+                scrollable
+                style={{flex : 1,}}
+                dateNameStyle={{display : 'none'}}
+                showDate={true}
+                calendarHeaderStyle={{marginTop : '10%',fontSize : 18,color : 'black'}}
+                dateNumberStyle={{display : 'none'}}
+                // iconLeft= {require('../../../assets/images/backLeft.png')}
+
+              />
+            </View>
+
             <Text style={{color : colors?.accent?.grey}}>No Slots available for today</Text>
-            <View>
+            <View style={styles?.buttonWrapper}>
             <Button
             text="Next day avaibility on Tue, 09"
             buttonColor={colors?.primary?.blue}
@@ -80,16 +102,15 @@ export default function TimeSlot({navigation}) {
             </View>
           </View>
         </View>
-        <View
-          style={styles?.buttonsSection}>
+        <View style={styles?.buttonsSection}>
           <Button
             text="Continue"
             buttonColor={colors?.primary?.blue}
             buttonTextColor={colors?.accent?.white}
-            buttonVerticalPadding={17}
+            buttonVerticalPadding={14}
             outlineColor={colors?.primary?.blue}
-            fontSize={17}
-              handlePress={()=>navigation.navigate('Landing Page')}
+            fontSize={22}
+            handlePress={() => navigation.navigate('Current Day Schedule')}
           />
         </View>
       </View>
@@ -111,7 +132,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginTop: '7%',
-    justifyContent : 'space-between'
+    justifyContent: 'space-between',
   },
   header: {
     fontSize: 25,
@@ -121,14 +142,14 @@ const styles = StyleSheet.create({
   timeSlotCardWrapper: {
     borderRadius: 15,
     marginHorizontal: '5%',
-    height : '70%'
+    height: '70%',
   },
   topSection: {
     flexDirection: 'row',
     // alignItems: 'center',
     paddingHorizontal: '5%',
     marginTop: '10%',
-    alignItems : 'center'
+    alignItems: 'center',
   },
   drImage: {
     width: 70,
@@ -141,27 +162,34 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
   },
-  textSection : {
-    flexBasis : '70%'
+  textSection: {
+    flexBasis: '70%',
   },
-  centeredSection : {
-    alignItems : 'center'
+  centeredSection: {
+    alignItems: 'center',
+    // flex : 1,
+    // paddingHorizontal : '5%',
   },
-  buttonsSection : {
-    marginHorizontal : '5%',
-    marginTop : '20%'
+  buttonsSection: {
+    marginHorizontal: '5%',
+    marginTop: '20%',
   },
-  horizontalLine : {
-    borderBottomWidth : 1,
-    marginHorizontal : '3%',
-    marginTop : '5%'
+  horizontalLine: {
+    borderBottomWidth: 1,
+    marginHorizontal: '3%',
+    marginTop: '5%',
   },
-  iconCircle : {
-    width : 50,
-    height : 50,
-    borderRadius : 50 / 2,
-    justifyContent : 'center',
-    alignItems : 'center',
-
+  iconCircle: {
+    width: 50,
+    height: 50,
+    borderRadius: 50 / 2,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop : '5%',
+    
+  },
+  buttonWrapper : {
+    marginTop : '7%',
+    marginBottom : '3%'
   },
 });

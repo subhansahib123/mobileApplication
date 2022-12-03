@@ -1,9 +1,11 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 
-import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import {useSelector} from 'react-redux';
 import Button from '../../../common/Button';
+
+/// Image
+import thumbIcon  from '../../../assets/images/thumb.png'
 
 export default function BookingSucces({navigation}) {
   const {colors} = useSelector(state => state);
@@ -19,7 +21,7 @@ export default function BookingSucces({navigation}) {
           styles?.backDropIconSection,
           {backgroundColor: colors?.primary?.blue},
         ]}>
-        <AntDesignIcon name="like2" size={140} color={colors?.accent?.white} />
+          <Image source={thumbIcon} resizeMode = 'contain' style={{width : 160,height : 160,marginBottom : '10%'}}/>
       </View>
       <View
         style={[
@@ -79,17 +81,17 @@ const styles = StyleSheet.create({
     top : '-10%'
   },
   headerText : {
-    fontSize : 24,
+    fontSize : 22,
     fontWeight : 'bold'
   },
   captionText : {
-    fontSize : 23,
+    fontSize : 22,
     fontWeight : 'bold',
     marginTop : '1%'
   },
   bottomText : {
     textAlign : 'center',
-    fontSize : 17,
+    fontSize : 14,
     lineHeight : 20,
     marginTop : '2%'
   },

@@ -34,8 +34,8 @@ import MyDoctor from '../screens/Frontend/account/MyDoctor';
 import MyPayments from '../screens/Frontend/payment/MyPayments';
 import Offers from '../screens/Frontend/account/Offers';
 import TimeSlot from '../screens/Frontend/booking/TimeSlot';
+import CurrentDaySchedule from '../screens/Frontend/booking/CurrentDaySchedule';
 import NextDaySchedule from '../screens/Frontend/booking/NextDaySchedule';
-
 const Stack = createNativeStackNavigator();
 
 export default function AppNavigator() {
@@ -208,9 +208,32 @@ export default function AppNavigator() {
           options={{headerShown: false}}
         />
         <Stack.Screen
+          name="Current Day Schedule"
+          component={CurrentDaySchedule}
+          options={{
+            headerTransparent: true,
+            headerTitleStyle: {
+              color: colors?.primary?.blue,
+              fontSize: 22,
+              fontWeight: 'bold',
+            },
+            headerTitle : 'Select a time slot',
+            headerStyle: {backgroundColor: colors?.accent?.shadowColor},
+          }}
+        />
+        <Stack.Screen
           name="Next Day Schedule"
           component={NextDaySchedule}
-          options={{headerShown: false}}
+          options={{
+            headerTransparent: true,
+            headerTitleStyle: {
+              color: colors?.primary?.blue,
+              fontSize: 22,
+              fontWeight: 'bold',
+            },
+            headerTitle : 'Select a time slot',
+            headerStyle: {backgroundColor: colors?.accent?.shadowColor},
+          }}
         />
       </Stack.Navigator>
     </NavigationContainer>

@@ -10,8 +10,11 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 import FeatherIcon from 'react-native-vector-icons/Feather';
 
-import ProfilePic from '../assets/images/profile.jpeg';
 import {DATA} from '../screens/Frontend/booking/dummyData';
+
+/// Images
+import ProfilePic from '../assets/images/profile.jpeg';
+import messageIcon from '../assets/images/message.png';
 
 export default function BookingHistoryCard() {
   const {colors} = useSelector(state => state);
@@ -90,17 +93,13 @@ export default function BookingHistoryCard() {
               <Text style={[styles?.available, {color: colors?.accent?.dark}]}>
                 9:30AM - 08:00PM
               </Text>
-              <View
+              {/* <View
                 style={[
                   styles?.iconCircle,
                   {borderColor: colors?.accent?.lightGrey},
                 ]}>
-                <FeatherIcon
-                  name="message-square"
-                  size={25}
-                  color={colors?.primary?.blue}
-                />
-              </View>
+              </View> */}
+                <Image source={messageIcon} resizeMode = 'contain' style={{width : 50,height : 50}}/>
             </View>
           </View>
         );

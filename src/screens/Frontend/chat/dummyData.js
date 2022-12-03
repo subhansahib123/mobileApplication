@@ -4,6 +4,7 @@ export const DATA = [
       headerText: 'Title goes here',
       captionText: 'Sub text goes here',
       time: `a min ago`,
+      firstChild : true,
     },
     {
       id: 1,
@@ -70,5 +71,7 @@ export const DATA = [
       headerText: 'Title goes here',
       captionText: 'Sub text goes here',
       time: `a min ago`,
+      lastChild : true,
     },
   ];
+  

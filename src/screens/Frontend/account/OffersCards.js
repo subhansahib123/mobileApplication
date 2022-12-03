@@ -46,7 +46,7 @@ export default function OffersCards() {
             </View>
             <View style={styles?.bottomSection}>
                 <View style={[styles?.dottedWrapper,{borderColor : colors?.primary?.blue}]}>
-                    <Text>ZXDSC</Text>
+                    <Text style={{color : colors?.primary?.blue}}>ZXDSC</Text>
                 </View>
             <View style={styles?.buttonSection}>
             <Button

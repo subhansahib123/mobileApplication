@@ -1,10 +1,11 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import Button from './Button';
 import {useSelector} from 'react-redux';
 
+
 export default function StartUpPage(props) {
-  const {navigator, headingText, captionText, buttonText} = props;
+  const {navigator, headingText, captionText, buttonText,imagePath} = props;
 
   const {colors} = useSelector(state => state);
 
@@ -12,7 +13,9 @@ export default function StartUpPage(props) {
     <>
       <View
         style={[styles?.container, {backgroundColor: colors?.accent?.white}]}>
-        <View style={styles?.imageBox}></View>
+        <View style={styles?.imageBox}>
+          <Image source={imagePath} style={{flex : .65}} resizeMode = 'contain'/>
+        </View>
         <View style={styles?.infoBox}>
           <View>
             <Text style={[styles?.headerText, {color: colors?.accent?.dark}]}>
@@ -41,18 +44,18 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   imageBox: {
-    flexBasis: '35%',
-    // backgroundColor: 'red',
+    flexBasis: '40%',
+    justifyContent : 'flex-end',
+    alignItems : 'center',
   },
   infoBox: {
     flexBasis: '60%',
-    // backgroundColor : 'yellow',
     justifyContent: 'space-between',
     paddingVertical: '15%',
   },
   headerText: {
     textAlign: 'center',
-    fontSize: 27,
+    fontSize: 28,
     fontWeight: 'bold',
   },
   buttonSection: {

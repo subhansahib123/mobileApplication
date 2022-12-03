@@ -6,7 +6,7 @@ import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import bgImage from '../../../assets/images/optic2.jpg';
 import HopitalInfoCard from './HopitalInfoCard';
 
-export default function HopitalInfoPage() {
+export default function HopitalInfoPage({navigation}) {
   const {colors} = useSelector(state => state);
 
   return (
@@ -37,7 +37,7 @@ export default function HopitalInfoPage() {
         </ImageBackground>
       </View>
       <View style={{top : '-10%',marginBottom : '-17%'}}>
-        <HopitalInfoCard />
+        <HopitalInfoCard navigator ={navigation}/>
       </View>
     </ScrollView>
   );
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
   },
   bgImageSection: {},
   headerText: {
-    fontSize: 26,
+    fontSize: 22,
     fontWeight : 'bold'
   },
   topSection : {

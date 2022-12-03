@@ -1,8 +1,11 @@
-import {Pressable, StyleSheet, Text, View} from 'react-native';
+import {Image, Pressable, StyleSheet, Text, View} from 'react-native';
 import React, {useState} from 'react';
 
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import {useSelector} from 'react-redux';
+
+/// Images
+import searchIcon from '../assets/images/Search.png'
 
 
 
@@ -25,11 +28,7 @@ export default function BackDrop(props) {
                 styles?.searchBox,
                 {backgroundColor: colors?.accent?.white},
               ]}>
-              <FontAwesomeIcon
-                name="search"
-                size={15}
-                color={colors?.primary?.violet}
-              />
+              <Image source={searchIcon} resizeMode = 'contain' style={{width : 15,height : 20}}/>
             </Pressable>
             <Pressable onPress={()=>navigator.navigate('City')}>
               <Text style={[styles?.dropDownText, {color: colors?.accent?.white}]}>
@@ -56,13 +55,13 @@ const styles = StyleSheet.create({
     borderBottomRightRadius: 25,
   },
   topTextWrapper: {
-    marginLeft: '10%',
+    marginLeft: '7%',
     marginTop: '12%',
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
   topText: {
-    fontSize: 27,
+    fontSize: 22,
     fontWeight: 'bold',
     marginBottom : '22%'
   },
@@ -73,7 +72,7 @@ const styles = StyleSheet.create({
     paddingBottom : '20%'
   },
   dropDownText: {
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: '600',
     marginRight: 5,
     marginLeft: 7,
@@ -82,7 +81,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     width: '32%',
-    height: '43%',
+    height: '57%',
     borderRadius: 5,
     paddingHorizontal: '3%',
   },

@@ -1,4 +1,4 @@
-import {StyleSheet, Text, View} from 'react-native';
+import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {useSelector} from 'react-redux';
 
@@ -6,19 +6,25 @@ import FontisoIcon from 'react-native-vector-icons/Fontisto';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import Button from '../../../common/Button';
 
-export default function DrInfoCard() {
+/// Images
+import doctorIcon from '../../../assets/images/doctor.png';
+import locationIcon from '../../../assets/images/location3.png';
+
+export default function DrInfoCard({item}) {
   const {colors} = useSelector(state => state);
 
   return (
     <View
-      style={[styles?.cardWrapper, {backgroundColor: colors?.accent?.white}]}>
+      style={[styles?.cardWrapper, {backgroundColor: colors?.accent?.white,marginTop : item?.firstChild ? '11%' : 0}]}>
       <View style={styles?.upperContent}>
         <View style={styles?.topLeftCardSection}>
           <View
             style={[
               styles?.avatar,
               {backgroundColor: colors?.accent?.shadowColor},
-            ]}></View>
+            ]}>
+              <Image source={item?.userImage} resizeMode='contain' style={{width : '100%',height : '100%',borderRadius : 70 / 2}} />
+            </View>
           <Text style={[styles?.votes, {color: colors?.accent?.grey}]}>
             36 votes
           </Text>
@@ -45,19 +51,12 @@ export default function DrInfoCard() {
           </View>
           <View style={styles?.info}>
             <View style={{flexDirection: 'row'}}>
-              <FontisoIcon
-                name="doctor"
-                size={20}
-                color={colors?.gradients?.purple?.first}
-              />
+              <Image source={doctorIcon} resizeMode = 'contain' style={{width : 10,height : 20,marginRight : 5}}/>
               <Text style={{color: colors?.accent?.grey}}>1 Doctor</Text>
             </View>
             <View style={{flexDirection: 'row'}}>
-              <Ionicons
-                name="md-location-outline"
-                size={20}
-                color={colors?.gradients?.purple?.first}
-              />
+            <Image source={locationIcon} resizeMode = 'contain' style={{width : 12,height : 20,marginRight : 5}}/>
+
               <Text style={{color: colors?.accent?.grey}}>Andheri East</Text>
             </View>
           </View>
@@ -111,7 +110,7 @@ const styles = StyleSheet.create({
     paddingTop : '5%',
     elevation : 1,
     marginBottom : '5%',
-    zIndex : 1
+    marginTop : '5%'
   },
   upperContent: {
     flexDirection: 'row',

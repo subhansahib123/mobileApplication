@@ -1,11 +1,14 @@
 import React, {useState, useEffect} from 'react';
-import {LogBox} from 'react-native';
+import {Image, LogBox} from 'react-native';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import {useSelector} from 'react-redux';
 
 /// Otp
 import OTPInputView from '@twotalltotems/react-native-otp-input';
 import {getHash, startOtpListener, useOtpVerify} from 'react-native-otp-verify';
+
+///Image
+import estericImage from '../../../assets/images/code.png'
 
 export default function OTP({navigation, route}) {
   const [Otp, setOtp] = useState();
@@ -20,7 +23,7 @@ export default function OTP({navigation, route}) {
   //     console.log('valid code');
   //   } catch (error) {
   //     console.log('Invalid code.');
-  //     navigation.navigate('BottomTabs')
+  //     navigation.navigate('Bottom Tabs')
   //   }
   // }
 
@@ -56,6 +59,9 @@ export default function OTP({navigation, route}) {
         <Text style={[styles?.headerText, {color: colors?.accent?.dark}]}>
           Enter Code
         </Text>
+        <View style={styles?.imagewrapper}>
+          <Image source={estericImage} resizeMode='contain' style={styles?.image}/>
+        </View>
         <Text style={[styles?.captionText, {color: colors?.accent?.dark}]}>
           We have sent you an SMS on +92 7020764458 with 6 digit verification
           code.
@@ -109,7 +115,7 @@ const styles = StyleSheet.create({
   },
   topSection : {
     paddingHorizontal: '6%',
-    marginTop : '20%'
+    marginTop : '20%',
   },
   box: {
     marginHorizontal: '6%',
@@ -122,12 +128,20 @@ const styles = StyleSheet.create({
     fontSize: 27,
     fontWeight: 'bold',
   },
+  imagewrapper : {
+    flexBasis : '10%',
+    flex : 1,
+    alignItems : 'center',
+    marginTop : '2%'
+  },
+  image : {
+    flex :1
+  },
   captionText: {
     textAlign: 'center',
     fontSize: 15,
     lineHeight: 25,
-    marginTop : '3%',
-    marginBottom : '7%'
+    marginBottom : '5%'
   },
   inputWrapper: {
     flexDirection: 'row',

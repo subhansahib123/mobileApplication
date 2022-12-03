@@ -2,6 +2,9 @@ import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import StartUpPage from '../../../common/StartUpPage';
 
+import DoctorImage from '../../../assets/images/dr.png'
+
+
 export default function StartUp2({navigation}) {
   return (
     <>
@@ -11,6 +14,7 @@ export default function StartUp2({navigation}) {
 nearby you`}
         buttonText="Next"
         navigator={()=>navigation.navigate('Startup3')}
+        imagePath = {DoctorImage}
       />
     </>
   );

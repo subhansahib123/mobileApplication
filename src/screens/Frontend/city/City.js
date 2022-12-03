@@ -1,6 +1,7 @@
 import {
   Dimensions,
   FlatList,
+  Image,
   SafeAreaView,
   ScrollView,
   StyleSheet,
@@ -15,11 +16,16 @@ import IonicIcon from 'react-native-vector-icons/Ionicons';
 import EntypoIcon from 'react-native-vector-icons/Entypo';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome5';
 
+/// Images
+import crossIcon from '../../../assets/images/cross.png';
+import searchIcon from '../../../assets/images/searchIcon.png';
+import locationMark from '../../../assets/images/locationMark.png';
+
 export default function City() {
   const {colors} = useSelector(state => state);
-  const {width,height} = Dimensions.get('screen');
+  const {width, height} = Dimensions.get('screen');
 
-  const HEIGHT = height * 2
+  const HEIGHT = height * 2;
 
   const DATA = [
     {
@@ -77,7 +83,11 @@ export default function City() {
         ]}>
         <View style={styles?.topSection}>
           <View style={styles?.cancelSection}>
-            <EntypoIcon name="cross" size={40} color={colors?.accent?.white} />
+            <Image
+              source={crossIcon}
+              resizeMode="contain"
+              style={{flex: 0.39, marginLeft: 10, marginRight: 10}}
+            />
             <Text style={[styles?.text, {color: colors?.accent?.white}]}>
               Select Your City
             </Text>
@@ -88,10 +98,10 @@ export default function City() {
             styles?.searchInputWrapper,
             {backgroundColor: colors?.accent?.white},
           ]}>
-          <FontAwesomeIcon
-            name="search"
-            size={20}
-            color={colors?.accent?.dark}
+          <Image
+            source={searchIcon}
+            resizeMode="contain"
+            style={{flex: 0.12}}
           />
           <TextInput
             placeholder="Search here"
@@ -101,17 +111,10 @@ export default function City() {
         </View>
       </View>
       <View style={styles?.middleSection}>
-        <View
-          style={[
-            styles?.iconCircle,
-            {backgroundColor: colors?.accent?.white},
-          ]}>
-          <IonicIcon
-            name="md-locate-outline"
-            size={30}
-            color={colors?.gradients?.purple?.first}
-          />
+        <View style={styles?.iconCircle}>
+          <Image source={locationMark} resizeMode="contain" style={{flex: 1}} />
         </View>
+
         <Text style={[styles?.middleRightText, {color: colors?.accent?.dark}]}>
           Use Current Location
         </Text>
@@ -134,14 +137,14 @@ export default function City() {
             </Text>
             {/* <View style={[styles?.horizontalLine,{borderBottomColor : colors?.accent?.lightGrey}]}></View> */}
           </View>
-          <View style={{backgroundColor : colors?.accent?.white,height : HEIGHT}}>
+          <View
+            style={{backgroundColor: colors?.accent?.white, height: HEIGHT}}>
             <FlatList
               data={DATA}
               keyExtractor={item => item.id}
               renderItem={({item}) => {
                 return (
                   <View style={styles?.sectionBox}>
-                    
                     <View style={styles?.textSection}>
                       <Text
                         style={[
@@ -204,13 +207,13 @@ const styles = StyleSheet.create({
   middleSection: {
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: '10%',
-    paddingHorizontal: '7%',
+    // paddingVertical: '10%',
+    // paddingHorizontal: '7%',
   },
   iconCircle: {
-    width: 40,
-    height: 40,
-    borderRadius: 40 / 2,
+    width: 100,
+    height: 100,
+    borderRadius: 100 / 2,
     justifyContent: 'center',
     alignItems: 'center',
   },
@@ -220,7 +223,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   categoriesSection: {
-    flex : 1
+    flex: 1,
   },
   boxWrapper: {
     borderTopRightRadius: 35,
@@ -239,7 +242,6 @@ const styles = StyleSheet.create({
   },
   sectionBox: {
     paddingHorizontal: '7%',
-
   },
   textSection: {
     paddingHorizontal: '7%',

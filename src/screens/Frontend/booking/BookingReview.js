@@ -10,8 +10,11 @@ import React, {useState} from 'react';
 import {useSelector} from 'react-redux';
 import {RadioButton} from 'react-native-paper';
 
-import AntDesignIcon from 'react-native-vector-icons/AntDesign';
+/// Images
 import ProfilePic from '../../../assets/images/profile.jpeg';
+import addButton from '../../../assets/images/add.png'
+import progressBar from '../../../assets/images/Step3.png'
+
 export default function BookingReview({navigation}) {
   const [status, setStatus] = useState('unchecked');
   const {colors} = useSelector(state => state);
@@ -32,10 +35,13 @@ export default function BookingReview({navigation}) {
         styles?.container,
         {backgroundColor: colors?.accent?.shadowColor},
       ]}>
+        <View style={{flexBasis : '20%',marginTop : '-20%',marginBottom : '7%'}}>
+          <Image source={progressBar} resizeMode='contain' style={{width :'100%',height : 300,zIndex : 2}}/>
+        </View>
       <View
         style={[
           styles?.bookingReviewCard,
-          {backgroundColor: colors?.accent?.white},
+          {backgroundColor: colors?.accent?.white,zIndex : -1,},
         ]}>
         <View style={styles?.topSection}>
           <View style={[styles?.drImage]}>
@@ -111,15 +117,8 @@ export default function BookingReview({navigation}) {
           <View style={styles?.addIconSection}>
             <Pressable
               onPress={() => navigation.navigate('Review Booking')}
-              style={[
-                styles?.iconCircle,
-                {backgroundColor: colors?.primary?.blue},
-              ]}>
-              <AntDesignIcon
-                name="plus"
-                size={30}
-                color={colors?.accent?.white}
-              />
+              >
+              <Image source={addButton} resizeMode = 'contain' style={{width : 100,height : 90,marginBottom : '-5%'}}/>
             </Pressable>
             <Text
               style={[styles?.uploadText, {color: colors?.accent?.lightDark}]}>
@@ -139,7 +138,6 @@ const styles = StyleSheet.create({
   bookingReviewCard: {
     marginHorizontal: '5%',
     borderRadius: 15,
-    marginTop: '20%',
   },
   topSection: {
     flexDirection: 'row',
@@ -169,7 +167,7 @@ const styles = StyleSheet.create({
     // fontWeight : 'bold  '
   },
   bottomText: {
-    fontSize: 17,
+    fontSize: 16,
     fontWeight: 'bold',
   },
   horizontalLine: {
@@ -192,7 +190,9 @@ const styles = StyleSheet.create({
     paddingVertical: '-10%',
     marginTop: '3%',
   },
-  questText: {},
+  questText: {
+    fontSize : 14
+  },
   addIconSection: {
     alignItems: 'center',
     marginTop: '6%',
@@ -208,5 +208,6 @@ const styles = StyleSheet.create({
   },
   uploadText: {
     marginTop: '4%',
+    fontSize : 14
   },
 });

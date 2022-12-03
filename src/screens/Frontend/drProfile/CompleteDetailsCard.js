@@ -9,6 +9,12 @@ import mapImage from '../../../assets/images/map.webp';
 import Button from '../../../common/Button';
 import { useNavigation } from '@react-navigation/native';
 
+/// Images
+import locationIcon from '../../../assets/images/location2.png'
+import user1 from '../../../assets/images/asset-1.png';
+import user2 from '../../../assets/images/asset-2.png';
+import starIcon from '../../../assets/images/star.png';
+
 export default function CompleteDetailsCard() {
   const {colors} = useSelector(state => state);
   const navigation = useNavigation()
@@ -28,7 +34,7 @@ export default function CompleteDetailsCard() {
             buttonVerticalPadding={4}
             outlineColor={colors?.accent?.lightGrey}
             buttonWidth={90}
-            handlePress = {()=>navigation.navigate('Booking Review')}
+            handlePress = {()=>navigation.navigate('Time Slot')}
           />
         </View>
         <View
@@ -54,11 +60,7 @@ export default function CompleteDetailsCard() {
           ]}></View>
         <View style={styles?.mapSection}>
           <View style={styles?.addressIconSection}>
-            <Ionicons
-              name="md-location-outline"
-              size={20}
-              color={colors?.gradients?.skyBlue?.second}
-            />
+            <Image source={locationIcon} resizeMode='contain' style={{width : 15,height : 18}}/>
             <Text style={[styles?.addressText, {color: colors?.accent?.grey}]}>
               92/6, 3rd Floor, Outer Ring Road, Chandra
             </Text>
@@ -145,7 +147,7 @@ export default function CompleteDetailsCard() {
             styles?.horizontalLine,
             {borderColor: colors?.accent?.lightGrey, },
           ]}></View>
-            <Text style={{color : colors?.accent?.grey,marginTop : '5%'}}>
+            <Text style={{color : colors?.accent?.grey,marginTop : '5%',fontSize : 16}}>
             ALSO PRACTICES AT
             </Text>
           <View style={styles?.drProfileInfoSection}>
@@ -154,7 +156,9 @@ export default function CompleteDetailsCard() {
               style={[
                 styles?.profileCircle,
                 {backgroundColor: colors?.accent?.shadowColor},
-              ]}></View>
+              ]}>
+                <Image source={user1} resizeMode ='contain' style={{width : '100%',height : '100%',borderRadius : 50 / 2}}/>
+              </View>
             <View style={styles?.drInfo}>
               <Text style={[styles?.drName, {color: colors?.accent?.dark}]}>
               Dr. Zan Chau
@@ -167,7 +171,7 @@ export default function CompleteDetailsCard() {
           </View>
           <View>
             <View style={styles?.ratingStarSection}>
-              <AntDesignIcons name='star' size={20} color={colors?.secondary?.yellow} style={{marginRight : 5}}/>
+            <Image source={starIcon} resizeMode = 'contain' style={{width : 20,height : 20,marginRight : 5}}/>
               <Text style={{color : colors?.accent?.grey}}>4.2</Text>
             </View>
           </View>
@@ -183,7 +187,10 @@ export default function CompleteDetailsCard() {
               style={[
                 styles?.profileCircle,
                 {backgroundColor: colors?.accent?.shadowColor},
-              ]}></View>
+              ]}>
+                <Image source={user2} resizeMode ='contain' style={{width : '100%',height : '100%',borderRadius : 50 / 2}}/>
+
+              </View>
             <View style={styles?.drInfo}>
               <Text style={[styles?.drName, {color: colors?.accent?.dark}]}>
               Dr. Rina Dome
@@ -196,7 +203,7 @@ export default function CompleteDetailsCard() {
           </View>
           <View>
           <View style={styles?.ratingStarSection}>
-              <AntDesignIcons name='star' size={20} color={colors?.secondary?.yellow} style={{marginRight : 5}}/>
+          <Image source={starIcon} resizeMode = 'contain' style={{width : 20,height : 20,marginRight : 5}}/>
               <Text style={{color : colors?.accent?.grey}}>4.2</Text>
             </View>
           </View>

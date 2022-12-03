@@ -3,18 +3,22 @@ import React from 'react';
 import DemoList from '../../../common/DemoList';
 import { useNavigation } from '@react-navigation/native';
 
-export default function HospitalDemoList({}) {
+/// Images
+import hospitalImage from '../../../assets/images/hospitalImage.png'
 
-  const navigation = useNavigation()
+export default function HospitalDemoList(props) {
+
 
   return (
     <>
       <DemoList
-        headingText="Hospital nearby you"
+        headingText="Hospitals"
         topText="Hospital name"
         bottomText="Address"
         reviewStar = {true}
-        handlePress = {navigation.navigate('HospitalInfo')}
+        handlePress = {()=>props?.navigator?.navigate('HospitalInfo')}
+        images = {hospitalImage}
+
       />
     </>
   );

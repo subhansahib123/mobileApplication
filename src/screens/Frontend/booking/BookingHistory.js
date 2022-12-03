@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { Image, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { useSelector } from 'react-redux';
 
@@ -6,6 +6,11 @@ import EntypoIcon from "react-native-vector-icons/Entypo"
 
 import BookingHistoryTabs from './BookingHistoryTabs';
 import BookingHistoryCard from '../../../common/BookingHistoryCard';
+
+/// Images
+import crossIcon from '../../../assets/images/cross.png';
+
+
 
 export default function BookingHistory() {
 
@@ -15,7 +20,7 @@ export default function BookingHistory() {
     <View style={[styles?.container,{backgroundColor : colors?.accent?.shadowColor}]}>
       <View style={[styles?.backDropSection,{backgroundColor : colors?.primary?.blue}]}>
         <View style={styles?.crossIconSection}>
-        <EntypoIcon name='cross' size={40} color={colors?.accent?.white}/>
+<Image source={crossIcon} resizeMode='contain' style={{width : 22,height : 22,marginLeft : 10,marginRight : 10}}/>
         <Text style={[styles?.header,{color : colors?.accent?.white}]}>Booking History</Text>
         </View>
       </View>

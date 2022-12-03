@@ -1,10 +1,13 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {useSelector} from 'react-redux';
-
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
+
+/// Images
 import ProfilePic from '../../../assets/images/profile.jpeg';
 import HopitalPic from '../../../assets/images/optic2.jpg';
+import starIcon from '../../../assets/images/star.png'
+
 export default function ProfileInfoBox() {
   const {colors} = useSelector(state => state);
 
@@ -18,12 +21,7 @@ export default function ProfileInfoBox() {
         </Text>
 
         <View style={styles?.ratingStar}>
-          <AntDesignIcon
-            name="star"
-            size={18}
-            color={colors?.secondary?.yellow}
-            style={{marginRight: 5}}
-          />
+          <Image source={starIcon} resizeMode = 'contain' style={{width : 20,height : 20,marginRight : 5}}/>
           <Text style={{color: colors?.accent?.grey}}>4.2</Text>
         </View>
       </View>
@@ -115,11 +113,12 @@ const styles = StyleSheet.create({
   },
   drName: {
     textAlign: 'center',
-    fontSize: 21,
+    fontSize: 22,
     fontWeight: 'bold',
   },
   drInfo: {
     textAlign: 'center',
+    fontSize : 14
   },
   experienceTextSection: {
     paddingHorizontal: '5%',

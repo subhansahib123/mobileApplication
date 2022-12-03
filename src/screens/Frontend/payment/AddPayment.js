@@ -1,4 +1,5 @@
 import {
+  Image,
   StyleSheet,
   Text,
   TextInput,
@@ -9,6 +10,10 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 import Button from '../../../common/Button';
 
+/// Images
+import progressBar from '../../../assets/images/Step5.png'
+
+
 export default function AddPayment({navigation}) {
   const {colors} = useSelector(state => state);
 
@@ -18,6 +23,9 @@ export default function AddPayment({navigation}) {
         styles?.container,
         {backgroundColor: colors?.accent?.shadowColor},
       ]}>
+        <View style={{flexBasis : '20%',marginTop : '-20%'}}>
+          <Image source={progressBar} resizeMode='contain' style={{width :'100%',height : 300,zIndex : 2}}/>
+        </View>
       <View
         style={[
           styles?.paymentCard,
@@ -101,7 +109,6 @@ const styles = StyleSheet.create({
     marginHorizontal: '5%',
     marginTop: '6%',
     borderRadius: 15,
-    marginTop : '25%'
   },
   upperlineWrapper: {
     flexDirection: 'row',

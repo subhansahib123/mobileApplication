@@ -1,9 +1,12 @@
 import {Image, StyleSheet, Text, TextInput, View} from 'react-native';
 import React, {useState} from 'react';
 import {useSelector} from 'react-redux';
-import AntDesignIcon from 'react-native-vector-icons/AntDesign';
-import ProfilePic from '../../../assets/images/profile.jpeg';
 import Button from '../../../common/Button';
+
+/// Images
+import ProfilePic from '../../../assets/images/profile.jpeg';
+import progressBar from '../../../assets/images/Step4.png'
+
 
 export default function ReviewBooking({navigation}) {
   const {colors} = useSelector(state => state);
@@ -14,6 +17,9 @@ export default function ReviewBooking({navigation}) {
         styles?.container,
         {backgroundColor: colors?.accent?.shadowColor},
       ]}>
+        <View style={{flexBasis : '20%',marginTop : '-20%',marginBottom : '7%'}}>
+          <Image source={progressBar} resizeMode='contain' style={{width :'100%',height : 300,zIndex : 2}}/>
+        </View>
       <View
         style={[
           styles?.bookingReviewCard,
@@ -109,7 +115,7 @@ const styles = StyleSheet.create({
   bookingReviewCard: {
     marginHorizontal: '5%',
     borderRadius: 15,
-    marginTop: '25%',
+    // marginTop: '25%',
     paddingBottom : '10%'
   },
   topSection: {
@@ -136,7 +142,7 @@ const styles = StyleSheet.create({
     paddingVertical : '2%'
   },
   headingText: {
-    fontSize: 21,
+    fontSize: 22,
     fontWeight: 'bold',
     marginBottom: '5%',
   },

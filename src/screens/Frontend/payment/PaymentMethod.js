@@ -1,7 +1,7 @@
 import {
   Dimensions,
   FlatList,
-  ScrollView,
+  Image,
   StyleSheet,
   Text,
   View,
@@ -14,6 +14,10 @@ import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome5';
 import {RadioButton} from 'react-native-paper';
 import SwipableCards from './SwipableCards';
 import Button from '../../../common/Button';
+
+/// Images
+import progressBar from '../../../assets/images/Step6.png'
+
 
 export default function PaymentMethod({navigation}) {
   const [checked, setChecked] = useState('');
@@ -42,7 +46,14 @@ export default function PaymentMethod({navigation}) {
         styles?.container,
         {backgroundColor: colors?.accent?.shadowColor},
       ]}>
-      <View style={{marginTop : '25%',marginBottom : '5%'}}>
+      <View style={{flexBasis: '20%', marginTop: '-20%', marginBottom: '7%'}}>
+        <Image
+          source={progressBar}
+          resizeMode="contain"
+          style={{width: '100%', height: 300, zIndex: 2}}
+        />
+      </View>
+      <View style={{marginBottom: '5%'}}>
         <SwipableCards />
       </View>
       <View
@@ -95,28 +106,6 @@ export default function PaymentMethod({navigation}) {
           style={{
             flexDirection: 'row',
             alignItems: 'center',
-            marginVertical: -6,
-          }}>
-          <RadioButton
-            value="second"
-            status={checked === 'second' ? 'checked' : 'unchecked'}
-            onPress={() => setChecked('second')}
-            color={colors?.gradients?.lightBlue?.second}
-          />
-          <Text style={[styles?.leftText, {color: colors?.accent?.dark}]}>
-            Cash on Payment
-          </Text>
-        </View>
-      </View>
-      <View
-        style={[
-          styles?.boxWrapper,
-          {backgroundColor: colors?.accent?.white, alignItems: 'center'},
-        ]}>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
             marginVertical: -8,
           }}>
           <View
@@ -145,16 +134,16 @@ export default function PaymentMethod({navigation}) {
         />
       </View>
       <View style={styles?.buttonSection}>
-          <Button
-            text="Continue"
-            buttonColor={colors?.primary?.blue}
-            buttonTextColor={colors?.accent?.white}
-            buttonVerticalPadding={15}
-            outlineColor={colors?.accent?.lightGrey}
-            // buttonWidth={90}
-            handlePress = {()=>navigation.navigate('Booking Success')}
-          />
-          </View>
+        <Button
+          text="Continue"
+          buttonColor={colors?.primary?.blue}
+          buttonTextColor={colors?.accent?.white}
+          buttonVerticalPadding={15}
+          outlineColor={colors?.accent?.lightGrey}
+          // buttonWidth={90}
+          handlePress={() => navigation.navigate('Booking Success')}
+        />
+      </View>
     </View>
   );
 }
@@ -167,8 +156,8 @@ const styles = StyleSheet.create({
     // marginHorizontal: '5%',
     marginTop: '30%',
     borderRadius: 15,
-    marginBottom : '5%',
-    marginLeft : 20
+    marginBottom: '5%',
+    marginLeft: 20,
   },
   upperlineWrapper: {
     flexDirection: 'row',
@@ -215,8 +204,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  buttonSection : {
-    paddingHorizontal : '5%',
-    marginTop : '15%'
+  buttonSection: {
+    paddingHorizontal: '5%',
+    marginTop: '15%',
   },
 });
