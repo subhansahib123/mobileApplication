@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 28,
     fontWeight: 'bold',
+    fontFamily : 'Poppins-ExtraBold'
   },
   buttonSection: {
     marginHorizontal: '25%',

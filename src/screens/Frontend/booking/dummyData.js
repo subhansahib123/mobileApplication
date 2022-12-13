@@ -5,6 +5,7 @@ export const DATA = [
       captionText: 'Sub text goes here',
       schedule : 'CLOSED TODAY',
       status : 'inactive',
+      firstChild : true,
     },
     {
         id: 1,

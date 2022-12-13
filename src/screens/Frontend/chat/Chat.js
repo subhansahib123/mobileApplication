@@ -18,7 +18,7 @@ export default function Chat() {
     <View style={[styles?.container,{backgroundColor : colors?.accent?.shadowColor}]}>
       <View style={[styles?.backDropSection,{backgroundColor : colors?.primary?.blue}]}>
         <View style={styles?.crossIconSection}>
-            <Image source={crossIcon} resizeMode='contain' style={{flex : .09,marginLeft : 10,marginRight : 10}}/>
+            <Image source={crossIcon} resizeMode='contain' style={{flex : .07,marginLeft : 10,marginRight : 10}}/>
         <Text style={[styles?.header,{color : colors?.accent?.white}]}>Chat</Text>
         </View>
       </View>
@@ -48,7 +48,7 @@ const styles = StyleSheet.create({
         marginTop : '10%'
     },
     header : {
-        fontSize : 27,
+        fontSize : 22,
         fontWeight : 'bold',
         marginLeft : 10,
     },

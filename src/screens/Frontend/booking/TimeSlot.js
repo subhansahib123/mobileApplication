@@ -59,7 +59,7 @@ export default function TimeSlot({navigation}) {
               <Text style={[styles?.drName, {color: colors?.accent?.dark}]}>
                 Dr. Jitendra Raut
               </Text>
-              <Text style={{color: colors?.accent?.grey}}>
+              <Text style={{color: colors?.accent?.grey,fontSize : 14}}>
                 B.Sc, MBBS, DDVL, MD- Dermitol...
               </Text>
             </View>
@@ -79,12 +79,12 @@ export default function TimeSlot({navigation}) {
                 showDate={true}
                 calendarHeaderStyle={{marginTop : '10%',fontSize : 18,color : 'black'}}
                 dateNumberStyle={{display : 'none'}}
-                // iconLeft= {require('../../../assets/images/backLeft.png')}
+                headerText={`Today, ${4} December`}
 
               />
             </View>
 
-            <Text style={{color : colors?.accent?.grey}}>No Slots available for today</Text>
+            <Text style={{color : colors?.accent?.grey,fontSize : 14}}>No Slots available for today</Text>
             <View style={styles?.buttonWrapper}>
             <Button
             text="Next day avaibility on Tue, 09"
@@ -94,9 +94,10 @@ export default function TimeSlot({navigation}) {
             outlineColor={colors?.primary?.blue}
             fontSize={17}
             buttonWidth = {260}
+          handlePress={() => navigation.navigate('Current Day Schedule')}
           />
             </View>
-            <Text style={{color : colors?.accent?.grey}}>OR</Text>
+            <Text style={{color : colors?.accent?.grey,fontSize : 14}}>OR</Text>
             <View style={[styles?.iconCircle,{backgroundColor : colors?.primary?.blue}]}>
                 <MaterialCommunityIcon name='greater-than' size={20} color ={colors?.accent?.white}/>
             </View>
@@ -109,7 +110,7 @@ export default function TimeSlot({navigation}) {
             buttonTextColor={colors?.accent?.white}
             buttonVerticalPadding={14}
             outlineColor={colors?.primary?.blue}
-            fontSize={22}
+            fontSize={18}
             handlePress={() => navigation.navigate('Current Day Schedule')}
           />
         </View>
@@ -135,7 +136,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   header: {
-    fontSize: 25,
+    fontSize: 22,
     fontWeight: 'bold',
     marginLeft: 10,
   },

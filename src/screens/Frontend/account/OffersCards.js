@@ -81,7 +81,7 @@ const styles = StyleSheet.create({
   },
 
   caption: {
-    fontSize: 15,
+    fontSize: 14,
     marginTop : '3%'
   },
   bottomSection : {

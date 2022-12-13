@@ -57,10 +57,12 @@ const styles = StyleSheet.create({
     tabsSection : {
         position : 'relative',
         top : '-2.5%',
+        marginBottom : '-12%',
+        zIndex : 1
     },
     messageBoxesSec : {
         paddingHorizontal : '5%',
-        marginTop : '3%',
-        flex : 1
+        flex : 1,
+        
     },
 })

@@ -147,7 +147,7 @@ export default function CompleteDetailsCard() {
             styles?.horizontalLine,
             {borderColor: colors?.accent?.lightGrey, },
           ]}></View>
-            <Text style={{color : colors?.accent?.grey,marginTop : '5%',fontSize : 16}}>
+            <Text style={{color : colors?.accent?.grey,marginTop : '5%',fontSize : 14}}>
             ALSO PRACTICES AT
             </Text>
           <View style={styles?.drProfileInfoSection}>
@@ -236,14 +236,14 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   headingText: {
-    fontSize: 15,
+    fontSize: 14,
   },
   iconWrapper: {
     flexDirection: 'row',
     alignItems: 'center',
   },
   locationText: {
-    fontSize: 17,
+    fontSize: 14,
     marginLeft: '2%',
   },
   horizontalLine: {
@@ -264,7 +264,7 @@ const styles = StyleSheet.create({
     marginTop: '1%',
   },
   rightText: {
-    fontSize: 15,
+    fontSize: 14,
     marginTop: '1%',
     fontWeight: 'bold',
   },
@@ -277,7 +277,7 @@ const styles = StyleSheet.create({
     marginBottom: '3%',
   },
   addressText: {
-    fontSize: 15,
+    fontSize: 14,
     marginLeft: '3%',
     marginBottom: '1%',
   },
@@ -318,7 +318,7 @@ const styles = StyleSheet.create({
     marginTop : '10%'
   },
   drName: {
-    fontSize: 15,
+    fontSize: 14,
     fontWeight: 'bold',
   },
   servicesSection: {
@@ -326,11 +326,12 @@ const styles = StyleSheet.create({
   },
   topText: {
     marginBottom: '2%',
+    fontSize :14
   },
   lastText: {
     marginTop: '3%',
     fontWeight: 'bold',
-    fontSize: 15,
+    fontSize: 16,
   },
   feedBackSection: {
     paddingVertical: '4%',

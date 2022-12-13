@@ -7,6 +7,11 @@ import ProfilePic from '../../../assets/images/profile.jpeg';
 import RatingStars from './../../../common/RatingStars';
 import Button from '../../../common/Button';
 
+/// Images
+import crossIcon from '../../../assets/images/cross.png'
+
+
+
 export default function DrRating({navigation}) {
   const {colors} = useSelector(state => state);
 
@@ -22,7 +27,7 @@ export default function DrRating({navigation}) {
           {backgroundColor: colors?.primary?.blue},
         ]}>
         <View style={styles?.crossIconSection}>
-          <EntypoIcon name="cross" size={30} color={colors?.accent?.white} />
+        <Image source={crossIcon} resizeMode='contain' style={{flex : .09,marginLeft : 10,marginRight : 10}}/>
           <Text style={[styles?.header, {color: colors?.accent?.white}]}>
             Review
           </Text>
@@ -64,7 +69,7 @@ export default function DrRating({navigation}) {
             <Text style={[styles?.questText, {color: colors?.accent?.grey}]}>
               How was your session?
             </Text>
-            <RatingStars size={35} readonly={false} sValue={3} />
+            <RatingStars size={32} readonly={false} sValue={3} />
           </View>
           <View
             style={[
@@ -124,7 +129,7 @@ const styles = StyleSheet.create({
     marginTop: '7%',
   },
   header: {
-    fontSize: 25,
+    fontSize: 22,
     fontWeight: 'bold',
     marginLeft: 10,
   },
@@ -135,7 +140,7 @@ const styles = StyleSheet.create({
   doctor: {
     paddingHorizontal: '3%',
     paddingTop: '5%',
-    fontSize: 23,
+    fontSize: 22,
     fontWeight: 'bold',
   },
   topSection: {
@@ -170,7 +175,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   questText: {
-    fontSize: 21,
+    fontSize: 18,
     fontWeight: 'bold',
     marginBottom: '3%',
   },

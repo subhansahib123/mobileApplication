@@ -35,7 +35,7 @@ export default function HopitalInfoCard({navigator}) {
             </Text>
           </View>
           <View style={styles?.ratingStars}>
-            <RatingStars size={18} sValue={4} readOnly={true} />
+            <RatingStars size={18} sValue={4.5} readonly={true} />
           </View>
         </View>
         <View
@@ -79,6 +79,9 @@ export default function HopitalInfoCard({navigator}) {
             styles?.horizontalLine,
             {borderColor: colors?.accent?.lightGrey},
           ]}></View>
+        <Text style={[styles?.departmentName, {color: colors?.accent?.dark}]}>
+          Opthamologist
+        </Text>
         <View style={styles?.drProfileInfoSection}>
           <View
             style={[
@@ -95,10 +98,17 @@ export default function HopitalInfoCard({navigator}) {
             <Text style={[styles?.drName, {color: colors?.accent?.dark}]}>
               Dr. Jitendra Raut
             </Text>
-            <Text style={{color: colors?.accent?.grey, marginBottom: '1.5%',fontSize : 14}}>
+            <Text
+              style={{
+                color: colors?.accent?.grey,
+                marginBottom: '1.5%',
+                fontSize: 14,
+              }}>
               B.Sc, MBBS, DDVL, MD
             </Text>
-            <Text style={{color: colors?.accent?.dark,fontSize : 14}}>$ 50</Text>
+            <Text style={{color: colors?.accent?.dark, fontSize: 14}}>
+              $ 50
+            </Text>
           </View>
           <View style={styles?.buttonSection}>
             <Button
@@ -117,6 +127,10 @@ export default function HopitalInfoCard({navigator}) {
             styles?.horizontalLine,
             {borderColor: colors?.accent?.lightGrey},
           ]}></View>
+        <Text style={[styles?.departmentName, {color: colors?.accent?.dark}]}>
+          Dermatologist
+        </Text>
+
         <View style={styles?.drProfileInfoSection}>
           <View
             style={[
@@ -133,10 +147,17 @@ export default function HopitalInfoCard({navigator}) {
             <Text style={[styles?.drName, {color: colors?.accent?.dark}]}>
               Dr. Sandeep maheta
             </Text>
-            <Text style={{color: colors?.accent?.grey, marginBottom: '1.5%',fontSize : 14}}>
+            <Text
+              style={{
+                color: colors?.accent?.grey,
+                marginBottom: '1.5%',
+                fontSize: 14,
+              }}>
               Dermatologist
             </Text>
-            <Text style={{color: colors?.accent?.dark,fontSize : 14}}>$ 70</Text>
+            <Text style={{color: colors?.accent?.dark, fontSize: 14}}>
+              $ 70
+            </Text>
           </View>
           <View style={styles?.buttonSection}>
             <Button
@@ -247,7 +268,7 @@ const styles = StyleSheet.create({
     marginTop: '1%',
   },
   rightText: {
-    fontSize: 15,
+    fontSize: 14,
     marginTop: '1%',
     fontWeight: 'bold',
   },
@@ -260,7 +281,7 @@ const styles = StyleSheet.create({
     marginBottom: '3%',
   },
   addressText: {
-    fontSize: 15,
+    fontSize: 14,
     marginLeft: '3%',
   },
   mapImageSection: {
@@ -274,6 +295,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     width: '100%',
     height: '100%',
+  },
+  departmentName: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    marginTop: '3%',
   },
   drProfileInfoSection: {
     flexDirection: 'row',
@@ -303,11 +329,12 @@ const styles = StyleSheet.create({
   },
   topText: {
     marginBottom: '2%',
+    fontSize : 14
   },
   lastText: {
     marginTop: '3%',
     fontWeight: 'bold',
-    fontSize: 15,
+    fontSize: 16,
   },
   feedBackSection: {
     paddingVertical: '4%',

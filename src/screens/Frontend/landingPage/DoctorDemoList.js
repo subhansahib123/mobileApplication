@@ -3,19 +3,19 @@ import React from 'react';
 import DemoList from '../../../common/DemoList';
 
 /// Images
-import user1 from '../../../assets/images/asset-1.png';
+import departmentImage from '../../../assets/images/department.png';
 
 export default function DoctorDemoList({navigator}) {
 
   return (
     <>
       <DemoList
-        headingText="Doctors"
-        topText="Doctor name"
-        bottomText="Qualification"
-        reviewStar={true}
-        handlePress={() => navigator.navigate('ProfilePage')}
-        images = {user1}
+        headingText="Departments"
+        topText="Department name"
+        bottomText="Location"
+        reviewStar={false}
+        handlePress={() => navigator.navigate('Speciality')}
+        images = {departmentImage}
       />
     </>
   );

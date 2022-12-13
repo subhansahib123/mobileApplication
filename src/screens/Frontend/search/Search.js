@@ -46,7 +46,7 @@ export default function Search() {
         ]}>
         <View style={styles?.topSection}>
           <View style={styles?.cancelSection}>
-            <Image source={crossIcon} resizeMode='contain' style={{flex : .35,marginLeft : 10,marginRight : 10}}/>
+            <Image source={crossIcon} resizeMode='contain' style={{flex : .32,marginLeft : 10,marginRight : 10}}/>
             <Text style={[styles?.text, {color: colors?.accent?.white}]}>
               Find & Book
             </Text>
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    fontSize: 23,
+    fontSize: 22,
     fontWeight: 'bold',
     marginLeft: 10,
   },
@@ -159,11 +159,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: '7%',
   },
   headingText: {
-    fontSize: 23,
+    fontSize: 20,
     fontWeight: 'bold',
   },
   captionText: {
-    fontSize: 15,
+    fontSize: 14,
   },
   horizontalLine: {
     borderBottomWidth: 1,

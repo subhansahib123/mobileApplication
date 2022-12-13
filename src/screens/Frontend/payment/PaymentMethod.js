@@ -33,11 +33,6 @@ export default function PaymentMethod({navigation}) {
       currentBalance: '$5,642',
       bgColor: colors?.gradients?.purple?.first,
     },
-    {
-      id: '1',
-      currentBalance: '$9,662',
-      bgColor: colors?.gradients?.purple?.second,
-    },
   ];
 
   return (
@@ -53,8 +48,8 @@ export default function PaymentMethod({navigation}) {
           style={{width: '100%', height: 300, zIndex: 2}}
         />
       </View>
-      <View style={{marginBottom: '5%'}}>
-        <SwipableCards />
+      <View style={styles?.cardWrapper}>
+        <SwipableCards data= {DATA}/>
       </View>
       <View
         style={[styles.boxWrapper, {backgroundColor: colors?.accent?.white}]}>
@@ -64,7 +59,7 @@ export default function PaymentMethod({navigation}) {
         <Text
           style={{
             color: colors?.secondary?.red,
-            fontSize: 15,
+            fontSize: 14,
             fontWeight: 'bold',
           }}>
           Change
@@ -88,43 +83,7 @@ export default function PaymentMethod({navigation}) {
             color={colors?.gradients?.lightBlue?.second}
           />
           <Text style={[styles?.leftText, {color: colors?.accent?.dark}]}>
-            Credit / Debit / ATM Card
-          </Text>
-        </View>
-        <FontAwesomeIcon
-          name="angle-right"
-          size={20}
-          color={colors?.accent?.dark}
-        />
-      </View>
-      <View
-        style={[
-          styles?.boxWrapper,
-          {backgroundColor: colors?.accent?.white, alignItems: 'center'},
-        ]}>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            marginVertical: -8,
-          }}>
-          <View
-            style={[
-              styles?.iconBox,
-              {backgroundColor: colors?.gradients?.lightBlue?.second},
-            ]}>
-            <FontAwesomeIcon
-              name="wallet"
-              size={15}
-              color={colors?.accent?.white}
-            />
-          </View>
-          <Text
-            style={[
-              styles?.leftText,
-              {color: colors?.accent?.dark, marginLeft: 10},
-            ]}>
-            Add a new card
+            STRIPE
           </Text>
         </View>
         <FontAwesomeIcon
@@ -140,7 +99,6 @@ export default function PaymentMethod({navigation}) {
           buttonTextColor={colors?.accent?.white}
           buttonVerticalPadding={15}
           outlineColor={colors?.accent?.lightGrey}
-          // buttonWidth={90}
           handlePress={() => navigation.navigate('Booking Success')}
         />
       </View>
@@ -152,37 +110,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  paymentCard: {
-    // marginHorizontal: '5%',
-    marginTop: '30%',
-    borderRadius: 15,
-    marginBottom: '5%',
-    marginLeft: 20,
-  },
-  upperlineWrapper: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    paddingHorizontal: '8%',
-  },
-  balanceWrapper: {
-    flexDirection: 'column',
-    marginTop: '10%',
-    marginBottom: '20%',
-  },
-  balance: {
-    fontSize: 30,
-    fontWeight: '500',
-  },
-  upperRightText: {
-    marginTop: '4%',
-    fontSize: 22,
-    fontWeight: 'bold',
-  },
-  lowerLineWrapper: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginHorizontal: '8%',
-    marginBottom: '7%',
+  cardWrapper : {
+    marginLeft : 'auto',
+    marginRight : 'auto',
   },
   boxWrapper: {
     marginTop: '4%',
@@ -194,18 +124,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: '5%',
   },
   leftText: {
-    fontSize: 17,
+    fontSize: 16,
     fontWeight: 'bold',
-  },
-  iconBox: {
-    width: 30,
-    height: 30,
-    borderRadius: 30 / 2,
-    justifyContent: 'center',
-    alignItems: 'center',
   },
   buttonSection: {
     paddingHorizontal: '5%',
-    marginTop: '15%',
+    marginTop: '10%',
   },
 });

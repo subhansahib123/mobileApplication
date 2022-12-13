@@ -3,6 +3,7 @@ import {
   FlatList,
   Image,
   Pressable,
+  ScrollView,
   StyleSheet,
   Text,
   View,
@@ -38,7 +39,7 @@ export default function LandingPage({navigation}) {
 
 
   return (
-    <View
+    <ScrollView
       style={[
         styles?.container,
         {backgroundColor: colors?.accent?.shadowColor},
@@ -127,15 +128,15 @@ export default function LandingPage({navigation}) {
             Hospitals
           </Text>
           <Text style={[styles?.info, {color: colors?.accent?.grey}]}>
-            Search Hospitals around you
+            Search {`\n`} Hospitals 
           </Text>
         </View>
         <View style={styles?.textSection}>
           <Text style={[styles?.name, {color: colors?.accent?.dark}]}>
-            Doctors
+            Department
           </Text>
           <Text style={[styles?.info, {color: colors?.accent?.grey}]}>
-            Search doctor around you
+            Search Departments
           </Text>
         </View>
         <View style={styles?.textSection}>
@@ -143,7 +144,7 @@ export default function LandingPage({navigation}) {
             Specialization
           </Text>
           <Text style={[styles?.info, {color: colors?.accent?.grey}]}>
-           Specialists around you
+          Search Specialists
           </Text>
         </View>
       </View>
@@ -208,7 +209,7 @@ export default function LandingPage({navigation}) {
         />
       </View>
         }
-    </View>
+    </ScrollView>
   );
 }
 

@@ -8,19 +8,19 @@ import EntypoIcon from 'react-native-vector-icons/Entypo'
 import crossIcon from '../../../assets/images/cross.png';
 
 
-export default function MyDoctor() {
+export default function MyDoctor({navigation}) {
     const {colors} = useSelector(state => state);
 
     return (
       <View style={[styles?.container,{backgroundColor : colors?.accent?.shadowColor}]}>
         <View style={[styles?.backDropSection,{backgroundColor : colors?.primary?.blue}]}>
           <View style={styles?.crossIconSection}>
-            <Image source={crossIcon} resizeMode='contain' style={{width : 22,height : 22,marginLeft : 10,marginRight : 10}}/>
+            <Image source={crossIcon} resizeMode='contain' style={{width : 18,height : 18,marginLeft : 10,marginRight : 10}}/>
           <Text style={[styles?.header,{color : colors?.accent?.white}]}>My Doctor</Text>
           </View>
         </View>
-          <View style={styles?.messageBoxesSec}>
-          <BookingHistoryCard />
+          <View style={styles?.messageBoxesSec} >
+          <BookingHistoryCard navigator = {navigation}/>
           </View>
       </View>
     )
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
         marginTop : '10%'
     },
     header : {
-        fontSize : 27,
+        fontSize : 22,
         fontWeight : 'bold',
         marginLeft : 10,
     },
@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
         marginTop : '3%',
         flex : 1,
         position : 'relative',
-        top : '-5%'
+        top : '-5%',
+        marginBottom : '-10%'
     },
 })

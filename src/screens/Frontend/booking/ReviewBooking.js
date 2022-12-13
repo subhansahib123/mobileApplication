@@ -36,7 +36,7 @@ export default function ReviewBooking({navigation}) {
             <Text style={[styles?.drName, {color: colors?.accent?.dark}]}>
               Dr. Jitendra Raut
             </Text>
-            <Text style={{color: colors?.accent?.grey}}>
+            <Text style={{color: colors?.accent?.grey,fontSize : 14}}>
               B.Sc, MBBS, DDVL, MD- Dermitol...
             </Text>
           </View>
@@ -46,10 +46,10 @@ export default function ReviewBooking({navigation}) {
             <Text style={[styles?.headingText, {color: colors?.accent?.dark}]}>
               Date and Time
             </Text>
-            <Text style={{color: colors?.accent?.dark}}>
+            <Text style={[styles?.captionText,{color: colors?.accent?.dark}]}>
               Tuesday, 09 May, 2022
             </Text>
-            <Text style={{color: colors?.accent?.grey}}>12:30 AM</Text>
+            <Text style={[styles?.captionText,{color: colors?.accent?.grey}]}>12:30 AM</Text>
           </View>
           <View
             style={[
@@ -60,8 +60,8 @@ export default function ReviewBooking({navigation}) {
             <Text style={[styles?.headingText, {color: colors?.accent?.dark}]}>
               Hospital Name
             </Text>
-            <Text style={{color: colors?.accent?.dark}}>Department Name</Text>
-            <Text style={{color: colors?.accent?.grey}}>
+            <Text style={[styles?.captionText,{color: colors?.accent?.dark}]}>Department Name</Text>
+            <Text style={[styles?.captionText,{color: colors?.accent?.grey}]}>
               Country, State, City
             </Text>
           </View>
@@ -74,9 +74,9 @@ export default function ReviewBooking({navigation}) {
             <Text style={[styles?.headingText, {color: colors?.accent?.dark}]}>
               Cost
             </Text>
-            <Text style={{color: colors?.accent?.dark}}>Cost $600.00</Text>
+            <Text style={[styles?.captionText,{color: colors?.accent?.dark}]}>Cost $600.00</Text>
             <View style={styles?.multipliedValue}>
-              <Text style={{color: colors?.accent?.dark}}>Hourly $300 x 2</Text>
+              <Text style={[styles?.captionText,{color: colors?.accent?.dark}]}>Hourly $300 x 2</Text>
               <Text style={[styles?.multipleText,{color: colors?.accent?.dark}]}>$600.00</Text>
             </View>
           </View>
@@ -142,9 +142,12 @@ const styles = StyleSheet.create({
     paddingVertical : '2%'
   },
   headingText: {
-    fontSize: 22,
+    fontSize: 20,
     fontWeight: 'bold',
     marginBottom: '5%',
+  },
+  captionText : {
+    fontSize :14
   },
   horizontalLine: {
     borderBottomWidth: 1,
@@ -161,11 +164,11 @@ const styles = StyleSheet.create({
     justifyContent : 'space-between'
   },
   multipleText : {
-    fontSize : 16,
+    fontSize : 14,
     fontWeight : 'bold'
   },
   grTotalText : {
-    fontSize : 18,
+    fontSize : 20,
     fontWeight : 'bold'
   },
   buttonSection : {

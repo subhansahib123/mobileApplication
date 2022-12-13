@@ -24,7 +24,7 @@ export default function Offers() {
           <Image
             source={crossIcon}
             resizeMode="contain"
-            style={{width: 22, height: 22, marginLeft: 10, marginRight: 10}}
+            style={{width: 18, height: 18, marginLeft: 10, marginRight: 10}}
           />
           <Text style={[styles?.header, {color: colors?.accent?.white}]}>
             Offers
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     marginTop: '10%',
   },
   header: {
-    fontSize: 27,
+    fontSize: 22,
     fontWeight: 'bold',
     marginLeft: 10,
   },

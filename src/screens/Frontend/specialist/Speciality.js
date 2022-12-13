@@ -18,7 +18,7 @@ import user1 from '../../../assets/images/asset-1.png';
 import user2 from '../../../assets/images/asset-2.png';
 import user3 from '../../../assets/images/asset-3.png';
 
-export default function Speciality() {
+export default function Speciality({navigation}) {
   const {colors} = useSelector(state => state);
 
   /// Screen Dimensions
@@ -64,7 +64,7 @@ export default function Speciality() {
           style={{
             color: colors?.accent?.white,
             fontSize: 15,
-            marginRight: -40,
+            marginRight: -55,
           }}>
           Country
         </Text>
@@ -108,7 +108,7 @@ export default function Speciality() {
           keyExtractor={item => item.id}
           showsVerticalScrollIndicator={false}
           renderItem={({item}) => {
-            return <DrInfoCard item={item} />;
+            return <DrInfoCard item={item} navigator={navigation}/>;
           }}
         />
       </View>
@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
     paddingBottom: '15%',
   },
   headingText: {
-    fontSize: 25,
+    fontSize: 22,
     fontWeight: 'bold',
     marginLeft: 10,
   },
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    // fontSize : 15,
+    fontSize : 14,
     // fontWeight : 'bold'
   },
 });

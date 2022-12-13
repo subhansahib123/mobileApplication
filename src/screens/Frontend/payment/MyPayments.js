@@ -25,6 +25,13 @@ export default function MyPayments({navigation}) {
   const [checked, setChecked] = useState('');
   const {colors} = useSelector(state => state);
 
+  const DATA = [
+    {
+      id: '0',
+      currentBalance: '$5,642',
+      bgColor: colors?.gradients?.purple?.first,
+    },
+  ];
 
   return (
     <View
@@ -38,15 +45,15 @@ export default function MyPayments({navigation}) {
           {backgroundColor: colors?.primary?.blue},
         ]}>
         <View style={styles?.crossIconSection}>
-          <Image source={crossIcon} resizeMode='contain' style={{width : 22,height : 22,marginLeft : 10,marginRight : 10}}/>
+          <Image source={crossIcon} resizeMode='contain' style={{width : 18,height : 18,marginLeft : 10,marginRight : 10}}/>
           <Text style={[styles?.header, {color: colors?.accent?.white}]}>
             My Payments
           </Text>
         </View>
       </View>
       <View style={styles?.cardsSection}>
-        <View style={{marginBottom : '3%'}}>
-          <SwipableCards />
+        <View style={styles?.cardWrapper}>
+          <SwipableCards data={DATA}/>
         </View>
       <View
         style={[styles.boxWrapper, {backgroundColor: colors?.accent?.white}]}>
@@ -56,7 +63,7 @@ export default function MyPayments({navigation}) {
         <Text
           style={{
             color: colors?.secondary?.red,
-            fontSize: 15,
+            fontSize: 14,
             fontWeight: 'bold',
           }}>
           Change
@@ -80,43 +87,7 @@ export default function MyPayments({navigation}) {
             color={colors?.gradients?.lightBlue?.second}
           />
           <Text style={[styles?.leftText, {color: colors?.accent?.dark}]}>
-            Credit / Debit / ATM Card
-          </Text>
-        </View>
-        <FontAwesomeIcon
-          name="angle-right"
-          size={20}
-          color={colors?.accent?.dark}
-        />
-      </View>
-      <View
-        style={[
-          styles?.boxWrapper,
-          {backgroundColor: colors?.accent?.white, alignItems: 'center'},
-        ]}>
-        <View
-          style={{
-            flexDirection: 'row',
-            alignItems: 'center',
-            marginVertical: -8,
-          }}>
-          <View
-            style={[
-              styles?.iconBox,
-              {backgroundColor: colors?.gradients?.lightBlue?.second},
-            ]}>
-            <FontAwesomeIcon
-              name="wallet"
-              size={15}
-              color={colors?.accent?.white}
-            />
-          </View>
-          <Text
-            style={[
-              styles?.leftText,
-              {color: colors?.accent?.dark, marginLeft: 10},
-            ]}>
-            Add a new card
+            STRIPE
           </Text>
         </View>
         <FontAwesomeIcon
@@ -147,9 +118,15 @@ const styles = StyleSheet.create({
     marginTop: '10%',
   },
   header: {
-    fontSize: 27,
+    fontSize: 22,
     fontWeight: 'bold',
     marginLeft: 10,
+  },
+  cardWrapper : {
+    marginBottom : '3%',
+    marginLeft : 'auto',
+    marginRight : 'auto',
+
   },
   cardsSection: {
     position : 'relative',
@@ -165,14 +142,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: '5%',
   },
   leftText: {
-    fontSize: 17,
+    fontSize: 16,
     fontWeight: 'bold',
   },
-  iconBox: {
-    width: 30,
-    height: 30,
-    borderRadius: 30 / 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
+
 });

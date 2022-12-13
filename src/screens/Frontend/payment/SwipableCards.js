@@ -2,31 +2,17 @@ import { Dimensions, FlatList, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { useSelector } from 'react-redux';
 
-export default function SwipableCards() {
+export default function SwipableCards({data}) {
     const {colors} = useSelector(state => state);
 
   const {width, height} = Dimensions.get('screen');
-  const LENGTH = width * 0.8;
+  const LENGTH = width * 0.9;
   const HEIGHT = height * 0.22;
-
-  const DATA = [
-    {
-      id: '0',
-      currentBalance: '$5,642',
-      bgColor: colors?.gradients?.purple?.second,
-    },
-    {
-        id: '1',
-        currentBalance: '$9,662',
-        bgColor: colors?.gradients?.purple?.first,
-        lastChild : true,
-    },
-  ];
 
   return (
     
         <FlatList
-          data={DATA}
+          data={data}
           keyExtractor={item => item.id}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
@@ -80,7 +66,6 @@ export default function SwipableCards() {
 const styles = StyleSheet.create({
     paymentCard: {
         borderRadius: 15,
-        marginLeft : 15
       },
       upperlineWrapper: {
         flexDirection: 'row',

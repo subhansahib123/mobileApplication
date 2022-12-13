@@ -5,10 +5,11 @@ import {
   StyleSheet,
   Text,
   View,
+  TouchableOpacity
 } from 'react-native';
 import React from 'react';
 import {useSelector} from 'react-redux';
-import FeatherIcon from 'react-native-vector-icons/Feather';
+import Ionicons from 'react-native-vector-icons/Ionicons'
 
 import {DATA} from '../screens/Frontend/booking/dummyData';
 
@@ -16,12 +17,11 @@ import {DATA} from '../screens/Frontend/booking/dummyData';
 import ProfilePic from '../assets/images/profile.jpeg';
 import messageIcon from '../assets/images/message.png';
 
-export default function BookingHistoryCard() {
+export default function BookingHistoryCard({navigator}) {
   const {colors} = useSelector(state => state);
   const {width, height} = Dimensions?.get('screen');
   const LENGHT = width * 0.9;
   const HEIGHT = height * 0.27;
-
 
   return (
     <FlatList
@@ -93,13 +93,18 @@ export default function BookingHistoryCard() {
               <Text style={[styles?.available, {color: colors?.accent?.dark}]}>
                 9:30AM - 08:00PM
               </Text>
-              {/* <View
-                style={[
-                  styles?.iconCircle,
-                  {borderColor: colors?.accent?.lightGrey},
-                ]}>
-              </View> */}
-                <Image source={messageIcon} resizeMode = 'contain' style={{width : 50,height : 50}}/>
+              <TouchableOpacity activeOpacity={.6} onPress={()=>navigator.navigate('Chat')}>
+
+              <Image
+                source={messageIcon}
+                resizeMode="contain"
+                style={{width: 50, height: 50}}
+                
+                />
+                </TouchableOpacity>
+                <View style={[styles?.iconCircle,{backgroundColor : colors?.accent?.white,borderColor : colors?.accent?.lightGrey}]}>
+                  <Ionicons name='ios-call-outline' size={21} color ={colors?.primary?.blue} onPress={()=>navigator.navigate('Call Page')}/>
+                </View>
             </View>
           </View>
         );
@@ -167,9 +172,9 @@ const styles = StyleSheet.create({
     marginTop: '4%',
   },
   iconCircle: {
-    width: 50,
-    height: 50,
-    borderRadius: 50 / 2,
+    width: 48,
+    height: 48,
+    borderRadius: 48 / 2,
     justifyContent: 'center',
     alignItems: 'center',
     borderWidth: 1,

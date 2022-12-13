@@ -22,7 +22,7 @@ export default function ProfileInfoBox() {
 
         <View style={styles?.ratingStar}>
           <Image source={starIcon} resizeMode = 'contain' style={{width : 20,height : 20,marginRight : 5}}/>
-          <Text style={{color: colors?.accent?.grey}}>4.2</Text>
+          <Text style={{color: colors?.accent?.grey,fontSize : 14}}>4.2</Text>
         </View>
       </View>
       <View style={styles?.infoSection}>
@@ -48,13 +48,13 @@ export default function ProfileInfoBox() {
         <View style={styles?.experienceTextSection}>
           <Text style={{color: colors?.accent?.dark, fontSize: 15}}>
             16{' '}
-            <Text style={{color: colors?.accent?.grey, fontSize: 13}}>
+            <Text style={{color: colors?.accent?.grey, fontSize: 14}}>
               yrs. Experience
             </Text>
           </Text>
           <Text style={{color: colors?.accent?.dark, fontSize: 15}}>
             89%{' '}
-            <Text style={{color: colors?.accent?.grey, fontSize: 13}}>
+            <Text style={{color: colors?.accent?.grey, fontSize: 14}}>
               (4384 votes)
             </Text>
           </Text>
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
     marginTop: '4%',
   },
   subscriptionText: {
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold',
   },
   ratingStar: {

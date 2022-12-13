@@ -10,7 +10,7 @@ import Button from '../../../common/Button';
 import doctorIcon from '../../../assets/images/doctor.png';
 import locationIcon from '../../../assets/images/location3.png';
 
-export default function DrInfoCard({item}) {
+export default function DrInfoCard({item,navigator}) {
   const {colors} = useSelector(state => state);
 
   return (
@@ -95,6 +95,7 @@ export default function DrInfoCard({item}) {
           buttonWidth = '55%'
           outlineColor ={colors?.accent?.lightGrey}
           fontSize = {19}
+          handlePress={()=>navigator.navigate('HospitalInfo')}
         />
       </View>
     </View>
@@ -125,7 +126,7 @@ const styles = StyleSheet.create({
   },
   votes: {
     marginTop: '10%',
-    fontSize: 15,
+    fontSize: 14,
     textAlign : 'center'
   },
   feedBack: {
@@ -154,7 +155,7 @@ const styles = StyleSheet.create({
     marginBottom : '3%'
   },
   fee: {
-    fontSize: 19,
+    fontSize: 18,
     fontWeight: 'bold',
     marginBottom : '9%'
   },

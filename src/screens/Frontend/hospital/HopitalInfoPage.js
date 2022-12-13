@@ -27,10 +27,7 @@ export default function HopitalInfoPage({navigation}) {
                 color={colors?.accent?.white}
                 style={{marginRight : 10}}
               />
-              <Text
-                style={[styles?.headerText, {color: colors?.accent?.white}]}>
-                Ophthalmologist
-              </Text>
+              
             </View>
             <Text style={{color : colors?.accent?.white,fontSize : 14}}>Country</Text>
           </View>
@@ -50,7 +47,7 @@ const styles = StyleSheet.create({
   bgImageSection: {},
   headerText: {
     fontSize: 22,
-    fontWeight : 'bold'
+    fontWeight : 'bold',
   },
   topSection : {
     flexDirection : 'row',

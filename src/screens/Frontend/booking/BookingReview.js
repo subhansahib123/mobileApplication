@@ -54,7 +54,7 @@ export default function BookingReview({navigation}) {
             <Text style={[styles?.drName, {color: colors?.accent?.dark}]}>
               Dr. Jitendra Raut
             </Text>
-            <Text style={{color: colors?.accent?.grey}}>
+            <Text style={{color: colors?.accent?.grey,fontSize : 14}}>
               B.Sc, MBBS, DDVL, MD- Dermitol...
             </Text>
           </View>

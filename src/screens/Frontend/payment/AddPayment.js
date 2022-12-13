@@ -47,10 +47,10 @@ export default function AddPayment({navigation}) {
           </Text>
         </View>
         <View style={styles?.lowerLineWrapper}>
-          <Text style={{color: colors?.accent?.white, fontSize: 15}}>
+          <Text style={{color: colors?.accent?.white, fontSize: 14}}>
             0000 1234 5678 XXXX
           </Text>
-          <Text style={{color: colors?.accent?.white, fontSize: 15}}>
+          <Text style={{color: colors?.accent?.white, fontSize: 14}}>
             10/21
           </Text>
         </View>
@@ -59,7 +59,8 @@ export default function AddPayment({navigation}) {
         <TextInput
           placeholder="Account Holder Name"
           placeholderTextColor={colors?.accent?.grey}
-          style={[styles?.inputField, {backgroundColor: colors?.accent?.white}]}
+          style={[styles?.inputField, {backgroundColor: colors?.accent?.white,}]}
+          
           />
         <TextInput
           placeholder="Card Number"
@@ -140,6 +141,7 @@ const styles = StyleSheet.create({
     marginTop: '7%',
   },
   inputField: {
+    fontSize : 14,
     borderRadius: 30,
     paddingHorizontal: 20,
     marginBottom: '4%',

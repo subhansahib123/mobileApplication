@@ -16,7 +16,7 @@ export default function OTP({navigation, route}) {
   // const {confirm, phoneNumber} = route.params;
   const {colors} = useSelector(state => state);
 
-  // const {stopListener} = useOtpVerify({numberOfDigits: 6});
+  const {stopListener} = useOtpVerify({numberOfDigits: 6});
   // async function confirmCode() {
   //   try {
   //     await confirm.confirm(Otp);
@@ -36,10 +36,10 @@ export default function OTP({navigation, route}) {
 
   //   startOtpListener(message => {
   //     // extract the otp using regex e.g. the below regex extracts 4 digit otp from message
-  //     const otp = /(\d{6})/g.exec(message)[1];
+  //     // const otp = /(\d{6})/g.exec(message)[1];
   //     // console.log(otp)
   //     // console.log(isNaN(otp));
-  //     setOtp(otp);
+  //     // setOtp(otp);
   //   });
   //   return () => stopListener();
   // }, []);
