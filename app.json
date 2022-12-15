@@ -1,4 +1,11 @@
 {
   "name": "drtele24",
-  "displayName": "drtele24"
+  "displayName": "drtele24",
+  "extra": {
+    "eas": {
+      "projectId": "d6b47a36-027c-4b8a-9535-7253424587bb"
+    }
+  },
+  "owner": "hassanali5120",
+  "slug": "drtele"
 }
