@@ -174,7 +174,7 @@ const styles = StyleSheet.create({
     flexDirection : 'row',
     alignItems : 'center',
     paddingVertical : '10%',
-    paddingHorizontal : '7%'
+    paddingHorizontal : '13%'
 },
   iconCircle : {
     width : 40,
