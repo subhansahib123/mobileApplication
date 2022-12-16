@@ -3,7 +3,15 @@
   "displayName": "drtele24",
   "extra": {
     "eas": {
+<<<<<<< HEAD
       "projectId": "778c58dd-e67f-4180-88f8-7e760a940d8d"
     }
   }
+=======
+      "projectId": "d6b47a36-027c-4b8a-9535-7253424587bb"
+    }
+  },
+  "owner": "hassanali5120",
+  "slug": "drtele"
+>>>>>>> 2c40ecc168632fcc965555206484ce2bf0954430
 }
