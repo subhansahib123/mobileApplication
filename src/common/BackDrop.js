@@ -21,11 +21,12 @@ export default function BackDrop(props) {
           <Text style={[styles?.topText, {color: colors?.accent?.white}]}>
             Home
           </Text>
+          
 
 
 
           <View style={styles?.dropDownSection}>
-            
+
             <Pressable onPress={()=>navigator.navigate('Search')}
               style={[
                 styles?.searchBox,

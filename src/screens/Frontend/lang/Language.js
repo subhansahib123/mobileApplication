@@ -175,6 +175,7 @@ const styles = StyleSheet.create({
     alignItems : 'center',
     paddingVertical : '10%',
     paddingHorizontal : '7%'
+    
 },
   iconCircle : {
     width : 40,
