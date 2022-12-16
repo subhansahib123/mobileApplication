@@ -16,10 +16,10 @@ export default function OTP({navigation, route}) {
   // const {confirm, phoneNumber} = route.params;
   const {colors} = useSelector(state => state);
 
-  const {stopListener} = useOtpVerify({numberOfDigits: 6});
+  // const { hash, otp, message, timeoutError, stopListener, startListener } = useOtpVerify({numberOfDigits: 6});
   // async function confirmCode() {
   //   try {
-  //     await confirm.confirm(Otp);
+  //     // await confirm.confirm(Otp);
   //     console.log('valid code');
   //   } catch (error) {
   //     console.log('Invalid code.');
@@ -28,22 +28,26 @@ export default function OTP({navigation, route}) {
   // }
 
   // useEffect(() => {
+    
   //   getHash()
   //     .then(hash => {
   //       // console.log(hash);
   //     })
   //     .catch(console.log);
-
   //   startOtpListener(message => {
   //     // extract the otp using regex e.g. the below regex extracts 4 digit otp from message
-  //     // const otp = /(\d{6})/g.exec(message)[1];
-  //     // console.log(otp)
+  //     const otp = /(\d{6})/g.exec(message)[1];
+      
+  //     console.log(otp)
   //     // console.log(isNaN(otp));
-  //     // setOtp(otp);
+  //     console.log(typeof otp)
+      
+  //     setOtp(Number(otp));
   //   });
   //   return () => stopListener();
   // }, []);
 
+  // console.log(typeof Otp)
 
   LogBox.ignoreLogs([
     'Warning:  Non-serializable values were found in the navigation state.',
@@ -75,7 +79,7 @@ export default function OTP({navigation, route}) {
             
             // code={this.state.code} //You can supply this prop or not. The component will be used as a controlled / uncontrolled component respectively.
             // onCodeChanged = {code => { this.setState({code})}}
-            // code={OTP} 
+            // code={Otp} 
             autoFocusOnLoad
             codeInputFieldStyle={styles.underlineStyleBase}
             codeInputHighlightStyle={styles.underlineStyleHighLighted}

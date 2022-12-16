@@ -1,5 +1,6 @@
 import {
   Image,
+  ScrollView,
   StyleSheet,
   Text,
   TextInput,
@@ -18,14 +19,15 @@ export default function AddPayment({navigation}) {
   const {colors} = useSelector(state => state);
 
   return (
-    <View
+    <>
+        <View style={{flexBasis : '20%',marginTop : '-20%'}}>
+          <Image source={progressBar} resizeMode='contain' style={{width :'100%',height : 300,zIndex : 2}}/>
+        </View>
+    <ScrollView 
       style={[
         styles?.container,
         {backgroundColor: colors?.accent?.shadowColor},
       ]}>
-        <View style={{flexBasis : '20%',marginTop : '-20%'}}>
-          <Image source={progressBar} resizeMode='contain' style={{width :'100%',height : 300,zIndex : 2}}/>
-        </View>
       <View
         style={[
           styles?.paymentCard,
@@ -98,18 +100,21 @@ export default function AddPayment({navigation}) {
             handlePress = {()=>navigation.navigate('Add Payment Method')}
           />
           </View>
-    </View>
+    </ScrollView>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+
   },
   paymentCard: {
     marginHorizontal: '5%',
     marginTop: '6%',
     borderRadius: 15,
+
   },
   upperlineWrapper: {
     flexDirection: 'row',
@@ -145,6 +150,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     paddingHorizontal: 20,
     marginBottom: '4%',
+    color : 'black'
   },
   buttonSection : {
     paddingHorizontal : '5%',

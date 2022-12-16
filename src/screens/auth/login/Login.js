@@ -43,6 +43,25 @@ export default function Login({}) {
   //   }
   // }
 
+  const fetchData = async () => {
+    var myHeaders = new Headers();
+    myHeaders.append("phonNumber", "+923035383338");
+    
+    var raw = "";
+    
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+    
+    fetch("https://drtele.co/api/patient/logined?phoneNumber=+923035383338", requestOptions)
+      .then(response => response.json())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
+    }
+
   return (
     <View
       style={[
@@ -99,6 +118,7 @@ export default function Login({}) {
             outlineColor="transparent"
             // handlePress = {()=>signInWithPhoneNumber(formattedValue)}
             handlePress={() => navigation.navigate('OTP')}
+            // handlePress={fetchData}
           />
         </View>
       </View>

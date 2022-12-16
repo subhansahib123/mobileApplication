@@ -1,4 +1,9 @@
 {
   "name": "drtele24",
-  "displayName": "drtele24"
+  "displayName": "drtele24",
+  "extra": {
+    "eas": {
+      "projectId": "778c58dd-e67f-4180-88f8-7e760a940d8d"
+    }
+  }
 }

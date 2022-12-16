@@ -20,7 +20,7 @@ export default function BookingHistory() {
     <View style={[styles?.container,{backgroundColor : colors?.accent?.shadowColor}]}>
       <View style={[styles?.backDropSection,{backgroundColor : colors?.primary?.blue}]}>
         <View style={styles?.crossIconSection}>
-<Image source={crossIcon} resizeMode='contain' style={{width : 22,height : 22,marginLeft : 10,marginRight : 10}}/>
+<Image source={crossIcon} resizeMode='contain' style={{width : 18,height : 18,marginLeft : 10,marginRight : 10}}/>
         <Text style={[styles?.header,{color : colors?.accent?.white}]}>Booking History</Text>
         </View>
       </View>
@@ -50,7 +50,7 @@ const styles = StyleSheet.create({
         marginTop : '10%'
     },
     header : {
-        fontSize : 27,
+        fontSize : 22,
         fontWeight : 'bold',
         marginLeft : 10,
     },
@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
         position : 'relative',
         top : '-2.5%',
         marginBottom : '-12%',
-        zIndex : 1
+        zIndex : 1,
     },
     messageBoxesSec : {
         paddingHorizontal : '5%',

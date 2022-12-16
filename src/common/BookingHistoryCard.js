@@ -37,6 +37,7 @@ export default function BookingHistoryCard({navigator}) {
                 backgroundColor: colors?.accent?.white,
                 width: LENGHT,
                 height: HEIGHT,
+                marginTop : item?.firstChild ? '15%' : 0,
               },
             ]}>
             <View style={styles?.topSection}>

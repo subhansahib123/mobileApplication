@@ -1,10 +1,13 @@
-import {FlatList, ScrollView, StyleSheet, Text, TextInput, View} from 'react-native';
+import {FlatList, Image, ScrollView, StyleSheet, Text, TextInput, View} from 'react-native';
 import React from 'react';
 import {useSelector} from 'react-redux';
 
 import IonicIcon from 'react-native-vector-icons/Ionicons';
-import EntypoIcon from 'react-native-vector-icons/Entypo';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome5';
+
+/// Images
+import crossIcon from '../../../assets/images/cross.png'
+import searchIcon from '../../../assets/images/searchIcon.png'
 
 export default function Language() {
   const {colors} = useSelector(state => state);
@@ -66,8 +69,9 @@ export default function Language() {
         ]}>
         <View style={styles?.topSection}>
           <View style={styles?.cancelSection}>
-            <EntypoIcon name="cross" size={40} color={colors?.accent?.white} />
-            <Text style={[styles?.text, {color: colors?.accent?.white}]}>
+
+<Image source={crossIcon} resizeMode='contain' style={{flex : .42,marginLeft : 10,marginRight : 10}}/>
+<Text style={[styles?.text, {color: colors?.accent?.white}]}>
             Select your Language
             </Text>
           </View>
@@ -77,11 +81,7 @@ export default function Language() {
             styles?.searchInputWrapper,
             {backgroundColor: colors?.accent?.white},
           ]}>
-          <FontAwesomeIcon
-            name="search"
-            size={20}
-            color={colors?.accent?.dark}
-          />
+            <Image source={searchIcon} resizeMode='contain' style={{flex : .12,}}/>
           <TextInput
             placeholder="Search here"
             placeholderTextColor={colors?.accent?.grey}
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    fontSize: 23,
+    fontSize: 22,
     fontWeight: 'bold',
     marginLeft: 10,
   },
@@ -166,8 +166,7 @@ const styles = StyleSheet.create({
     marginHorizontal: '7%',
     paddingHorizontal: '5%',
     borderRadius: 30,
-    paddingVertical: 4,
-    top : 20,
+    top : 23,
     flexDirection: 'row',
     alignItems: 'center',
   },
@@ -201,7 +200,7 @@ const styles = StyleSheet.create({
     paddingVertical : '5%'
   },
   cardHeaderText : {
-    fontSize : 22,
+    fontSize : 20,
     fontWeight : 'bold',
     marginLeft : 10
   },

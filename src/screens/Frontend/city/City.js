@@ -111,8 +111,10 @@ export default function City() {
         </View>
       </View>
       <View style={styles?.middleSection}>
-        <View style={styles?.iconCircle}>
-          <Image source={locationMark} resizeMode="contain" style={{flex: 1}} />
+        <View style={[styles?.iconCircle,{backgroundColor : colors?.accent?.white}]}>
+          {/* <Image source={locationMark} resizeMode="contain" style={{flex: 1}} /> */}
+          <IonicIcon name='md-locate-outline' size={30} color ={colors?.gradients?.purple?.first}/>
+
         </View>
 
         <Text style={[styles?.middleRightText, {color: colors?.accent?.dark}]}>
@@ -207,20 +209,21 @@ const styles = StyleSheet.create({
   middleSection: {
     flexDirection: 'row',
     alignItems: 'center',
-    // paddingVertical: '10%',
-    // paddingHorizontal: '7%',
+    paddingVertical: '10%',
+    paddingHorizontal: '7%',
   },
   iconCircle: {
-    width: 100,
-    height: 100,
-    borderRadius: 100 / 2,
+    width: 40,
+    height: 40,
+    borderRadius: 40 / 2,
     justifyContent: 'center',
     alignItems: 'center',
+
   },
   middleRightText: {
-    marginLeft: 10,
     fontSize: 17,
     fontWeight: '500',
+    marginLeft : 10
   },
   categoriesSection: {
     flex: 1,
