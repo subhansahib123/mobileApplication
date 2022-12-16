@@ -22,7 +22,10 @@ export default function BackDrop(props) {
             Home
           </Text>
 
+
+
           <View style={styles?.dropDownSection}>
+            
             <Pressable onPress={()=>navigator.navigate('Search')}
               style={[
                 styles?.searchBox,
