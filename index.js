@@ -10,10 +10,8 @@ import {store} from '../drtele24/src/store/Store';
 export default function Main() {
   return (
     
-        
         <App />
         
-    
   );
 }
 

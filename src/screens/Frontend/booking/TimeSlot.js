@@ -7,8 +7,6 @@ import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import MaterialCommunityIcon from 'react-native-vector-icons/MaterialCommunityIcons';
 import ProfilePic from '../../../assets/images/profile.jpeg';
 import Button from '../../../common/Button';
-import Calendar from '../../../common/Calendar';
-
 import CalendarStrip from 'react-native-calendar-strip';
 
 export default function TimeSlot({navigation}) {
@@ -147,7 +145,6 @@ const styles = StyleSheet.create({
   },
   topSection: {
     flexDirection: 'row',
-    // alignItems: 'center',
     paddingHorizontal: '5%',
     marginTop: '10%',
     alignItems: 'center',
@@ -168,8 +165,6 @@ const styles = StyleSheet.create({
   },
   centeredSection: {
     alignItems: 'center',
-    // flex : 1,
-    // paddingHorizontal : '5%',
   },
   buttonsSection: {
     marginHorizontal: '5%',
