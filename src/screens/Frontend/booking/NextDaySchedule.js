@@ -68,7 +68,7 @@ export default function NextDaySchedule({navigation}) {
             <CalendarStrip
               scrollable
               style={{flex: 1}}
-              // startingDate= "2022-12-2"
+              startingDate= "2022-12-2"
               dateNameStyle={{color: colors?.accent?.dark}}
               showDate={true}
               calendarHeaderStyle={{
