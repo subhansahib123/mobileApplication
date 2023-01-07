@@ -1,5 +1,5 @@
 import {Image, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import {useSelector} from 'react-redux';
 import {ProgressBar} from '@react-native-community/progress-bar-android';
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
@@ -8,9 +8,30 @@ import Button from '../../../common/Button';
 
 /// Images
 import userIcon from '../../../assets/images/userProfile.png';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-export default function ProfileCard() {
-  const {colors} = useSelector(state => state);
+export default function ProfileCard({navigator}) {
+  const {colors} = useSelector(state => state?.color);
+  const {isNavigated} = useSelector(state => state?.login);
+
+  const [name,setName] = useState('')
+  const [phoneNumber,setPhoneNumber] = useState('');
+  // console.log(updatedName);
+
+  useEffect(()=>{
+    getUserInfo()
+  },[isNavigated])
+
+  const getUserInfo = async() => {
+    const response = await AsyncStorage.getItem('USER')
+    const data = JSON.parse(response);
+
+    const userName = data.user.name
+    const phone_Number = data.user.phone_number;
+
+    setName(userName)
+    setPhoneNumber(phone_Number);
+  }
 
   return (
     <View
@@ -28,10 +49,10 @@ export default function ProfileCard() {
         </View>
         <View style={styles?.textSection}>
           <Text style={[styles?.drName, {color: colors?.accent?.white}]}>
-            Jitendra Raut
+            {name}
           </Text>
           <Text style={[styles?.number, {color: colors?.accent?.white}]}>
-            +91 97306270877
+            {phoneNumber}
           </Text>
         </View>
         <View style={styles?.percentageSection}>
@@ -53,6 +74,7 @@ export default function ProfileCard() {
             outlineColor={colors?.accent?.lightGrey}
             fontSize={16}
             buttonWidth = {220}
+            handlePress={()=>navigator.navigate('UpdateName')}
           />
         </View>
       </View>

@@ -10,7 +10,7 @@ import searchIcon from '../assets/images/Search.png'
 
 
 export default function BackDrop(props) {
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
 
   const {navigator} = props
 

@@ -14,7 +14,7 @@ import ProfilePic from '../../../assets/images/profile.jpeg';
 import {DATA} from './dummyData'
 
 export default function MessageBoxes() {
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
   const {width, height} = Dimensions?.get('screen');
   const LENGHT = width * 0.9;
   const HEIGHT = height * 0.1;

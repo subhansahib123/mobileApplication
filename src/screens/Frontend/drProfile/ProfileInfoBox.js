@@ -9,7 +9,7 @@ import HopitalPic from '../../../assets/images/optic2.jpg';
 import starIcon from '../../../assets/images/star.png'
 
 export default function ProfileInfoBox() {
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
 
   return (
     <View

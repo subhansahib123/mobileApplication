@@ -7,7 +7,7 @@ import ProfileInfoBox from './ProfileInfoBox';
 import CompleteDetailsCard from './CompleteDetailsCard';
 
 export default function ProfilePage({navigation}) {
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
 
   return (
     <ScrollView

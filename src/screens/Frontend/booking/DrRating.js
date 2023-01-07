@@ -13,7 +13,7 @@ import crossIcon from '../../../assets/images/cross.png'
 
 
 export default function DrRating({navigation}) {
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
 
   return (
     <View

@@ -1,26 +1,27 @@
-import React from 'react';
+import React,{useState} from 'react';
 import {
   Dimensions,
   FlatList,
-  ScrollView,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native';
-import {useSelector} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
 import DrInfoCard from './DrInfoCard';
 
-/// Images
-import user1 from '../../../assets/images/asset-1.png';
-import user2 from '../../../assets/images/asset-2.png';
-import user3 from '../../../assets/images/asset-3.png';
+import {setIsNavigated} from "../../../store/features/login/loginSice"
 
-export default function Speciality({navigation}) {
-  const {colors} = useSelector(state => state);
+export default function Speciality({navigation,route}) {
+  
 
+  const {colors} = useSelector(state => state?.color);
+  const {departmentInfo,doctors} = route?.params;
+
+  const dispatch = useDispatch()
   /// Screen Dimensions
   const {width, height} = Dimensions.get('screen');
   const ITEM_LENGTH1 = width * 0.3; // Item is a square. Therefore, its height and width are of the same length.
@@ -33,11 +34,7 @@ export default function Speciality({navigation}) {
     {id: 3, text: 'Consultation'},
   ];
 
-  const FlatListData = [
-    {id: 0, userImage: user1, firstChild: true},
-    {id: 1, userImage: user2},
-    {id: 2, userImage: user3},
-  ];
+  const FlatListData = doctors;
 
   return (
     <View
@@ -51,11 +48,22 @@ export default function Speciality({navigation}) {
           {backgroundColor: colors?.primary?.blue},
         ]}>
         <View style={styles?.leftSection}>
+          <TouchableOpacity
+          onPress={()=>{
+            navigation?.goBack()
+            dispatch(setIsNavigated(3))
+            
+          }}
+          activeOpacity={.8}
+          >
+
           <AntDesignIcon
             name="arrowleft"
             size={25}
             color={colors?.accent?.white}
-          />
+            
+            />
+            </TouchableOpacity>
           <Text style={[styles?.headingText, {color: colors?.accent?.white}]}>
             Ophthalmologist
           </Text>

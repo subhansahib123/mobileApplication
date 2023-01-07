@@ -16,7 +16,7 @@ import user2 from '../../../assets/images/asset-2.png';
 import starIcon from '../../../assets/images/star.png';
 
 export default function CompleteDetailsCard() {
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
   const navigation = useNavigation()
   return (
     <View

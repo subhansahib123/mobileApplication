@@ -7,7 +7,8 @@ import {useSelector} from 'react-redux';
 export default function StartUpPage(props) {
   const {navigator, headingText, captionText, buttonText,imagePath} = props;
 
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
+  
 
   return (
     <>

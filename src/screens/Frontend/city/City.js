@@ -22,7 +22,7 @@ import searchIcon from '../../../assets/images/searchIcon.png';
 import locationMark from '../../../assets/images/locationMark.png';
 
 export default function City() {
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
   const {width, height} = Dimensions.get('screen');
 
   const HEIGHT = height * 2;

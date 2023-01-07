@@ -9,7 +9,7 @@ import progressBar from '../../../assets/images/Step4.png'
 
 
 export default function ReviewBooking({navigation}) {
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
 
   return (
     <View

@@ -12,7 +12,7 @@ import filterIcon from '../../../assets/images/filterIcon.png';
 import crossIcon from '../../../assets/images/cross.png'
 
 export default function Search() {
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
 
   const DATA = [
     {

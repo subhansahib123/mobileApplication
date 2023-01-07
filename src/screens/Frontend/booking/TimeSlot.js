@@ -10,7 +10,7 @@ import Button from '../../../common/Button';
 import CalendarStrip from 'react-native-calendar-strip';
 
 export default function TimeSlot({navigation}) {
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
 
   return (
     <View

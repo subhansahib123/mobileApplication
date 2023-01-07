@@ -8,9 +8,9 @@ import {
   Text,
   View,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import BackDrop from '../../../common/BackDrop';
-import {useSelector} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 /// Pages
 import HospitalDemoList from './HospitalDemoList';
@@ -19,17 +19,21 @@ import DepartmentDemoList from './DepartmentDemoList';
 
 // Images
 import sliderImage from '../../../assets/images/sliderImage.png';
-import hospitalIcon from "../../../assets/images/hospitalIcon.png"
-import hospitalIconSelected from "../../../assets/images/hospitalIconSelected.png"
-import doctorIcon from '../../../assets/images/doctorfillIcon.png'
-import doctorIconSelected from '../../../assets/images/doctorfillIconWhite.png'
-import departmentIcon from "../../../assets/images/departmentIcon.png"
-import departmentIconSelected from "../../../assets/images/departmentIconWhite.png"
+import hospitalIcon from '../../../assets/images/hospitalIcon.png';
+import hospitalIconSelected from '../../../assets/images/hospitalIconSelected.png';
+import doctorIcon from '../../../assets/images/doctorfillIcon.png';
+import doctorIconSelected from '../../../assets/images/doctorfillIconWhite.png';
+import departmentIcon from '../../../assets/images/departmentIcon.png';
+import departmentIconSelected from '../../../assets/images/departmentIconWhite.png';
 
 export default function LandingPage({navigation}) {
-  const {colors} = useSelector(state => state);
+
+  const {colors} = useSelector(state => state?.color);
+  const {isAuthenticated} = useSelector(state => state?.login);
+
   const [selectedTab, setSelectedTab] = useState('');
   const [active, setActive] = useState();
+  const [organization, setOrganization] = useState({});
 
   const {width, height} = Dimensions.get('screen');
   const ITEM_LENGTH1 = width * 0.85; // Item is a square. Therefore, its height and width are of the same length.
@@ -37,7 +41,41 @@ export default function LandingPage({navigation}) {
 
   const DATA = [{id: 0}, {id: 1}, {id: 2}];
 
+  useEffect(() => {
+    fetchOrganizations();
+  }, []);
 
+
+  const fetchOrganizations = async () => {
+    let raw = '';
+
+    let requestOptions = {
+      method: 'GET',
+      body: raw,
+      redirect: 'follow',
+    };
+
+    try {
+      await fetch('http://192.168.0.111:8000/api', requestOptions)
+        .then(response => response.json())
+        .then(result => handleResponse(result))
+        .catch(error => console.log('error', error));
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleResponse = response => {
+
+    // console.log(response);
+    const data = response?.data;
+    
+    setOrganization(data);
+    
+  };
+
+
+  
   return (
     <ScrollView
       style={[
@@ -45,7 +83,7 @@ export default function LandingPage({navigation}) {
         {backgroundColor: colors?.accent?.shadowColor},
       ]}>
       <View>
-        <BackDrop navigator={navigation}/>
+        <BackDrop navigator={navigation} />
       </View>
 
       {/*  Selectable Icons */}
@@ -59,7 +97,7 @@ export default function LandingPage({navigation}) {
             styles?.iconBox,
             {
               backgroundColor:
-                active == 1 ? colors?.primary?.violet  : colors?.accent?.white,
+                active == 1 ? colors?.primary?.violet : colors?.accent?.white,
               shadowColor: active == 1 ? colors?.accent?.dark : 'transparent',
               shadowOffset: {
                 width: active == 1 ? 0 : 0,
@@ -71,7 +109,11 @@ export default function LandingPage({navigation}) {
               elevation: active == 1 ? 24 : 0,
             },
           ]}>
-            <Image source={active == 1 ? hospitalIconSelected : hospitalIcon} resizeMode = 'contain' style={{flex : .55}}/>
+          <Image
+            source={active == 1 ? hospitalIconSelected : hospitalIcon}
+            resizeMode="contain"
+            style={{flex: 0.55}}
+          />
         </Pressable>
         <Pressable
           onPress={() => {
@@ -82,7 +124,7 @@ export default function LandingPage({navigation}) {
             styles?.iconBox,
             {
               backgroundColor:
-                active == 2 ? colors?.primary?.violet  : colors?.accent?.white,
+                active == 2 ? colors?.primary?.violet : colors?.accent?.white,
               shadowColor: active == 2 ? colors?.accent?.dark : 'transparent',
               shadowOffset: {
                 width: active == 2 ? 0 : 0,
@@ -94,7 +136,11 @@ export default function LandingPage({navigation}) {
               elevation: active == 2 ? 24 : 0,
             },
           ]}>
-          <Image source={active == 2 ? doctorIconSelected : doctorIcon} resizeMode = 'contain' style={{flex : .55}}/>
+          <Image
+            source={active == 2 ? doctorIconSelected : doctorIcon}
+            resizeMode="contain"
+            style={{flex: 0.55}}
+          />
         </Pressable>
         <Pressable
           onPress={() => {
@@ -105,7 +151,7 @@ export default function LandingPage({navigation}) {
             styles?.iconBox,
             {
               backgroundColor:
-                active == 3 ? colors?.primary?.violet  : colors?.accent?.white,
+                active == 3 ? colors?.primary?.violet : colors?.accent?.white,
               shadowColor: active == 3 ? colors?.accent?.dark : 'transparent',
               shadowOffset: {
                 width: active == 3 ? 0 : 0,
@@ -117,7 +163,11 @@ export default function LandingPage({navigation}) {
               elevation: active == 3 ? 24 : 0,
             },
           ]}>
-          <Image source={active == 3 ? departmentIconSelected : departmentIcon} resizeMode = 'contain' style={{flex : .55}}/>
+          <Image
+            source={active == 3 ? departmentIconSelected : departmentIcon}
+            resizeMode="contain"
+            style={{flex: 0.55}}
+          />
         </Pressable>
       </View>
 
@@ -128,7 +178,7 @@ export default function LandingPage({navigation}) {
             Hospitals
           </Text>
           <Text style={[styles?.info, {color: colors?.accent?.grey}]}>
-            Search {`\n`} Hospitals 
+            Search {`\n`} Hospitals
           </Text>
         </View>
         <View style={styles?.textSection}>
@@ -144,7 +194,7 @@ export default function LandingPage({navigation}) {
             Specialization
           </Text>
           <Text style={[styles?.info, {color: colors?.accent?.grey}]}>
-          Search Specialists
+            Search Specialists
           </Text>
         </View>
       </View>
@@ -170,7 +220,7 @@ export default function LandingPage({navigation}) {
                 <Image
                   source={sliderImage}
                   style={{width: '100%', height: '100%', borderRadius: 10}}
-                  resizeMode='cover'
+                  resizeMode="cover"
                 />
               </View>
             );
@@ -178,37 +228,44 @@ export default function LandingPage({navigation}) {
         />
       </View>
 
-      {(selectedTab == 'Hospital' && <HospitalDemoList navigator= {navigation}/>) ||
-        (selectedTab == 'Doctor' && <DoctorDemoList navigator= {navigation}/>) ||
-        (selectedTab == 'Department' && <DepartmentDemoList navigator= {navigation}/>) ||
-        selectedTab == '' && <View style={styles?.sliderSection}>
-        <FlatList
-          data={DATA}
-          keyExtractor={item => item.id}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          renderItem={({item}) => {
-            return (
-              <View
-                style={[
-                  styles?.imageBox,
-                  {
-                    width: ITEM_LENGTH1,
-                    height: HEIGHT1,
-                    borderColor: colors?.accent?.grey,
-                    marginTop : '10%'
-                  },
-                ]}>
-                <Image
-                  source={sliderImage}
-                  style={{width: '100%', height: '100%', borderRadius: 10}}
-                />
-              </View>
-            );
-          }}
-        />
-      </View>
-        }
+      {(selectedTab == 'Hospital' && (
+        <HospitalDemoList navigator={navigation} organization = {organization}/>
+      )) ||
+        (selectedTab == 'Doctor' && (
+          <DoctorDemoList navigator={navigation} organization = {organization}/>
+        )) ||
+        (selectedTab == 'Department' && (
+          <DepartmentDemoList navigator={navigation} />
+        )) ||
+        (selectedTab == '' && (
+          <View style={styles?.sliderSection}>
+            <FlatList
+              data={DATA}
+              keyExtractor={item => item.id}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              renderItem={({item}) => {
+                return (
+                  <View
+                    style={[
+                      styles?.imageBox,
+                      {
+                        width: ITEM_LENGTH1,
+                        height: HEIGHT1,
+                        borderColor: colors?.accent?.grey,
+                        marginTop: '10%',
+                      },
+                    ]}>
+                    <Image
+                      source={sliderImage}
+                      style={{width: '100%', height: '100%', borderRadius: 10}}
+                    />
+                  </View>
+                );
+              }}
+            />
+          </View>
+        ))}
     </ScrollView>
   );
 }
@@ -235,8 +292,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginHorizontal: '3%',
-    top : -35
-    },
+    top: -35,
+  },
   textSection: {
     flexBasis: '30%',
   },
@@ -249,8 +306,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 14,
   },
-  sliderSection: {
-  },
+  sliderSection: {},
   imageBox: {
     marginLeft: 15,
     borderWidth: 1,

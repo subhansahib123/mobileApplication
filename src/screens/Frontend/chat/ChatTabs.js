@@ -6,7 +6,7 @@ import { useNavigation } from '@react-navigation/native';
 export default function ChatTabs() {
 
   const navigation = useNavigation()
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
   const {width,height} =Dimensions.get('screen');
   const LENGTH = width * .28;
   const HEIGHT = height * .04

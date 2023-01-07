@@ -3,7 +3,7 @@ import React from 'react';
 import {useSelector} from 'react-redux';
 
 export default function BookingHistoryTabs() {
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
   const {width, height} = Dimensions.get('screen');
   const LENGTH = width * 0.28;
   const HEIGHT = height * 0.045;

@@ -19,7 +19,7 @@ import { useNavigation } from '@react-navigation/native';
 
 export default function AuthPage(props) {
   const {titleText, subtitleText, buttonText, bottomText} = props;
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
 
   const [value, setValue] = useState('');
   const [formattedValue, setFormattedValue] = useState('');

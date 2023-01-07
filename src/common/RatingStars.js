@@ -8,7 +8,7 @@ export default function RatingStars(props) {
 
   const {size,readonly,sValue} = props
 
-  const {colors} = useSelector(state => state)
+  const {colors} = useSelector(state => state?.color)
 
   return (
     <>

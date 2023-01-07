@@ -10,7 +10,7 @@ import crossIcon from '../../../assets/images/cross.png'
 import searchIcon from '../../../assets/images/searchIcon.png'
 
 export default function Language() {
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
 
   const DATA = [
     {

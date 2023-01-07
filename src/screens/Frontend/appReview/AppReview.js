@@ -4,7 +4,7 @@ import {useSelector} from 'react-redux';
 import RatingStars from '../../../common/RatingStars';
 
 export default function AppReview() {
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
 
   return (
     <View

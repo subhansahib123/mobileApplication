@@ -24,7 +24,7 @@ export default function BottomTabs({navigation}) {
   const [active,setActive] = useState()
 
   const Tabs = createBottomTabNavigator();
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
 
   return (
     <Tabs.Navigator

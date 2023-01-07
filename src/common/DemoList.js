@@ -8,20 +8,35 @@ import {
   View,
 } from 'react-native';
 import React from 'react';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import {useNavigation} from '@react-navigation/native';
+
+import {setOrganizationId} from '../store/features/login/loginSice';
 
 /// Image
 import starIcon from '../assets/images/star.png';
 
 export default function DemoList(props) {
-  const {colors} = useSelector(state => state);
-  const {headingText, topText, bottomText, reviewStar, handlePress, images} =
-    props;
+  const {colors} = useSelector(state => state?.color);
+  const {
+    headingText,
+    topText,
+    bottomText,
+    reviewStar,
+    handlePress,
+    images,
+    orgData,
+    navigator,
+    navigateTo,
+  } = props;
+
+  /// Hopsital Api response state
 
   const navigation = useNavigation();
-  const DATA = [{id: 0}, {id: 1}, {id: 2,lastChild : true}];
+  const dispatch = useDispatch();
+
+  const DATA = orgData;
 
   const {width, height} = Dimensions.get('screen');
   const ITEM_LENGTH2 = width * 0.39; // Item is a square. Therefore, its height and width are of the same length.
@@ -39,29 +54,33 @@ export default function DemoList(props) {
       </View>
 
       {/* Boxes to be shown on selectable icon */}
+
       <View style={styles?.profileBoxesSection}>
         <FlatList
           data={DATA}
-          keyExtractor={item => item.id}
+          keyExtractor={item => item?.id}
           horizontal
           showsHorizontalScrollIndicator={false}
           renderItem={({item}) => {
             return (
               <Pressable
-                onPress={handlePress}
+                onPress={() =>
+                  navigator?.navigate({
+                    name: navigateTo,
+                    params: {orgId: item?.id},
+                    merge: true,
+                  })
+                }
                 style={[
                   styles?.profileBox,
                   {
                     backgroundColor: colors?.accent?.white,
                     width: ITEM_LENGTH2,
                     height: HEIGHT2,
-                    marginRight : item?.lastChild ? 18 : 0
+                    marginRight: item?.lastChild ? 18 : 0,
                   },
                 ]}>
-                <View
-                  style={[
-                    styles?.profileCircle,
-                  ]}>
+                <View style={[styles?.profileCircle]}>
                   <Image
                     source={images}
                     style={{
@@ -73,10 +92,10 @@ export default function DemoList(props) {
                 </View>
                 <Text
                   style={[styles?.profileName, {color: colors?.accent?.dark}]}>
-                  {topText}
+                  {item?.displayname}
                 </Text>
                 <Text style={[styles?.address, {color: colors?.accent?.grey}]}>
-                  {bottomText}
+                  {item?.building}
                 </Text>
                 {reviewStar && (
                   <View style={styles?.review}>
@@ -115,19 +134,18 @@ const styles = StyleSheet.create({
   leftText: {
     fontSize: 20,
     fontWeight: 'bold',
-    textAlign : 'left',
+    textAlign: 'left',
   },
   rightText: {
     fontSize: 16,
     fontWeight: 'bold',
   },
-  profileBoxesSection: {
-  },
+  profileBoxesSection: {},
   profileBox: {
     marginLeft: 18,
     borderRadius: 15,
     paddingHorizontal: '5%',
-    marginTop : '27%',
+    marginTop: '27%',
   },
   profileCircle: {
     width: 75,
@@ -136,7 +154,7 @@ const styles = StyleSheet.create({
     marginLeft: 'auto',
     marginRight: 'auto',
     position: 'relative',
-    top : '-17%',
+    top: '-17%',
   },
   profileName: {
     marginTop: '-12%',
