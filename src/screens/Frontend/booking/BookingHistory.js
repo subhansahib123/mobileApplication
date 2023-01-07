@@ -14,7 +14,7 @@ import crossIcon from '../../../assets/images/cross.png';
 
 export default function BookingHistory() {
 
-    const {colors} = useSelector(state => state);
+    const {colors} = useSelector(state => state?.color);
 
   return (
     <View style={[styles?.container,{backgroundColor : colors?.accent?.shadowColor}]}>

@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import DemoList from '../../../common/DemoList'
 
 /// Images
@@ -7,6 +7,9 @@ import departmentImage from '../../../assets/images/department.png';
 
 
 export default function DepartmentDemoList({navigator}) {
+
+
+
   return (
     <>
       <DemoList

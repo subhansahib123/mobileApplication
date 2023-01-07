@@ -1,28 +1,28 @@
 import {Image, ScrollView, StyleSheet, Text, View} from 'react-native';
-import React from 'react';
-import {useSelector} from 'react-redux';
+import React, {useEffect, useState} from 'react';
+import {useSelector,useDispatch} from 'react-redux';
 
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import mapImage from '../../../assets/images/map.webp';
 import Button from '../../../common/Button';
 
 /// Image
 import locationIcon from '../../../assets/images/location.png';
 import addressIcon from '../../../assets/images/location2.png';
-import user1 from '../../../assets/images/asset-1.png';
-import user2 from '../../../assets/images/asset-2.png';
-import RatingStars from './../../../common/RatingStars';
+import RatingStars from '../../../common/RatingStars';
 
-export default function HopitalInfoCard({navigator}) {
-  const {colors} = useSelector(state => state);
+// import {setParticularDepartmentId} from "../../../store/features/orgInfo/orgSlice"
 
+export default function HospitalInfoCard({navigator, hospitalInfo,departmentInfo}) {
+
+  const {colors} = useSelector(state => state?.color);
+  
   return (
     <View
       style={[styles?.cardWrapper, {backgroundColor: colors?.accent?.white}]}>
       <View style={styles?.cardContentwrapper}>
         <View style={styles?.cardTopSection}>
           <Text style={[styles?.headingText, {color: colors?.accent?.dark}]}>
-            Hospital Name
+            {hospitalInfo?.hospital?.displayname}
           </Text>
           <View style={styles?.iconWrapper}>
             <Image
@@ -31,7 +31,7 @@ export default function HopitalInfoCard({navigator}) {
               style={{width: 15, height: 15}}
             />
             <Text style={[styles?.locationText, {color: colors?.accent?.grey}]}>
-              Location
+              {`${hospitalInfo?.cityName},${hospitalInfo?.stateName},${hospitalInfo?.hospital?.country}`}
             </Text>
           </View>
           <View style={styles?.ratingStars}>
@@ -79,26 +79,35 @@ export default function HopitalInfoCard({navigator}) {
             styles?.horizontalLine,
             {borderColor: colors?.accent?.lightGrey},
           ]}></View>
-        <Text style={[styles?.departmentName, {color: colors?.accent?.dark}]}>
-          Opthamologist
-        </Text>
-        <View style={styles?.drProfileInfoSection}>
-          <View
-            style={[
-              styles?.profileCircle,
-              {backgroundColor: colors?.accent?.shadowColor},
-            ]}>
-            <Image
-              source={user1}
-              resizeMode="contain"
-              style={{width: '100%', height: '100%', borderRadius: 50 / 2}}
-            />
-          </View>
-          <View style={styles?.drInfo}>
-            <Text style={[styles?.drName, {color: colors?.accent?.dark}]}>
-              Dr. Jitendra Raut
-            </Text>
-            <Text
+
+        {hospitalInfo?.departmentSpecializations?.map((department, index) => {
+          return (
+            <View key={index}>
+              <Text
+                style={[styles?.departmentName, {color: colors?.accent?.dark}]}>
+                {department?.name}
+              </Text>
+              <View style={styles?.drProfileInfoSection}>
+                <View
+                  style={[
+                    styles?.profileCircle,
+                    {backgroundColor: colors?.accent?.shadowColor},
+                  ]}>
+                  <Image
+                    source={departmentInfo?.department?.image}
+                    resizeMode="contain"
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      borderRadius: 50 / 2,
+                    }}
+                  />
+                </View>
+                <View style={styles?.drInfo}>
+                  <Text style={[styles?.drName, {color: colors?.accent?.dark}]}>
+                    {departmentInfo?.department?.display_name}
+                  </Text>
+                  {/* <Text
               style={{
                 color: colors?.accent?.grey,
                 marginBottom: '1.5%',
@@ -108,30 +117,39 @@ export default function HopitalInfoCard({navigator}) {
             </Text>
             <Text style={{color: colors?.accent?.dark, fontSize: 14}}>
               $ 50
-            </Text>
-          </View>
-          <View style={styles?.buttonSection}>
-            <Button
-              text="Book"
-              buttonColor={colors?.accent?.white}
-              buttonTextColor={colors?.primary?.blue}
-              buttonVerticalPadding={4}
-              outlineColor={colors?.accent?.lightGrey}
-              buttonWidth={90}
-              handlePress={() => navigator.navigate('ProfilePage')}
-            />
-          </View>
-        </View>
-        <View
-          style={[
-            styles?.horizontalLine,
-            {borderColor: colors?.accent?.lightGrey},
-          ]}></View>
-        <Text style={[styles?.departmentName, {color: colors?.accent?.dark}]}>
-          Dermatologist
-        </Text>
+            </Text> */}
+                </View>
+                <View style={styles?.buttonSection}>
+                  <Button
+                    text="Preview"
+                    buttonColor={colors?.accent?.white}
+                    buttonTextColor={colors?.primary?.blue}
+                    buttonVerticalPadding={4}
+                    outlineColor={colors?.accent?.lightGrey}
+                    buttonWidth={90}
+                    handlePress={() =>
+                      navigator.navigate({
+                        name: 'Speciality',
+                        params: {departmentInfo: departmentInfo,doctors : departmentInfo?.doctors},
+                      })
+                    }
+                  />
+                </View>
+              </View>
+              <View
+                style={[
+                  styles?.horizontalLine,
+                  {borderColor: colors?.accent?.lightGrey},
+                ]}></View>
+            </View>
+          );
+        })}
 
-        <View style={styles?.drProfileInfoSection}>
+        {/* <Text style={[styles?.departmentName, {color: colors?.accent?.dark}]}>
+          Dermatologist
+        </Text> */}
+
+        {/* <View style={styles?.drProfileInfoSection}>
           <View
             style={[
               styles?.profileCircle,
@@ -170,12 +188,12 @@ export default function HopitalInfoCard({navigator}) {
               handlePress={() => navigator.navigate('ProfilePage')}
             />
           </View>
-        </View>
-        <View
+        </View> */}
+        {/* <View
           style={[
             styles?.horizontalLine,
             {borderColor: colors?.accent?.lightGrey},
-          ]}></View>
+          ]}></View> */}
         <View style={styles?.servicesSection}>
           <Text style={[styles?.topText, {color: colors?.accent?.grey}]}>
             SERVICES
@@ -306,6 +324,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     paddingTop: '2%',
     paddingBottom: '4.5%',
+    marginTop: '3%',
   },
   profileCircle: {
     width: 50,
@@ -318,7 +337,7 @@ const styles = StyleSheet.create({
   },
   buttonSection: {
     marginLeft: '3%',
-    marginTop: '15%',
+    // marginTop: '5%',
   },
   drName: {
     fontSize: 14,
@@ -329,7 +348,7 @@ const styles = StyleSheet.create({
   },
   topText: {
     marginBottom: '2%',
-    fontSize : 14
+    fontSize: 14,
   },
   lastText: {
     marginTop: '3%',

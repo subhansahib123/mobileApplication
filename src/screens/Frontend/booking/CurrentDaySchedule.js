@@ -9,7 +9,7 @@ import progressBar from '../../../assets/images/Step1.png';
 import ProfilePic from '../../../assets/images/profile.jpeg';
 
 export default function CurrentDaySchedule({navigation}) {
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
 
   return (
     <View

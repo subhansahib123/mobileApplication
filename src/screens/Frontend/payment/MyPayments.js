@@ -23,7 +23,7 @@ import crossIcon from '../../../assets/images/cross.png';
 
 export default function MyPayments({navigation}) {
   const [checked, setChecked] = useState('');
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
 
   const DATA = [
     {

@@ -14,7 +14,7 @@ import loudIcon from '../../../assets/images/loudIcon.png';
 import addCallerIcon from '../../../assets/images/addCaller.png';
 
 export default function CallPage({navigation}) {
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
 
   return (
     <View

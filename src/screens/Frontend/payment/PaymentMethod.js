@@ -21,7 +21,7 @@ import progressBar from '../../../assets/images/Step6.png'
 
 export default function PaymentMethod({navigation}) {
   const [checked, setChecked] = useState('');
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
 
   const {width, height} = Dimensions.get('screen');
   const LENGTH = width * 0.8;

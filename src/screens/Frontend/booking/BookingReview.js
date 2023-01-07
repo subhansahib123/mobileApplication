@@ -17,7 +17,7 @@ import progressBar from '../../../assets/images/Step3.png'
 
 export default function BookingReview({navigation}) {
   const [status, setStatus] = useState('unchecked');
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
 
   const handleSelection = () => {
     if (status == 'unchecked') {

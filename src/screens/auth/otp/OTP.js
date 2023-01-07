@@ -14,7 +14,7 @@ export default function OTP({navigation, route}) {
   const [Otp, setOtp] = useState();
 
   // const {confirm, phoneNumber} = route.params;
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
 
   // const { hash, otp, message, timeoutError, stopListener, startListener } = useOtpVerify({numberOfDigits: 6});
   // async function confirmCode() {

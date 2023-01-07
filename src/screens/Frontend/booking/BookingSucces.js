@@ -8,7 +8,7 @@ import Button from '../../../common/Button';
 import thumbIcon  from '../../../assets/images/thumb.png'
 
 export default function BookingSucces({navigation}) {
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
 
   return (
     <View

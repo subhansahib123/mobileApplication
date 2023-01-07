@@ -2,8 +2,6 @@ import {Image, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import {useSelector} from 'react-redux';
 
-import FontisoIcon from 'react-native-vector-icons/Fontisto';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import Button from '../../../common/Button';
 
 /// Images
@@ -11,11 +9,11 @@ import doctorIcon from '../../../assets/images/doctor.png';
 import locationIcon from '../../../assets/images/location3.png';
 
 export default function DrInfoCard({item,navigator}) {
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
 
   return (
     <View
-      style={[styles?.cardWrapper, {backgroundColor: colors?.accent?.white,marginTop : item?.firstChild ? '11%' : 0}]}>
+      style={[styles?.cardWrapper, {backgroundColor: colors?.accent?.white,marginTop :  '11%'}]}>
       <View style={styles?.upperContent}>
         <View style={styles?.topLeftCardSection}>
           <View
@@ -23,7 +21,7 @@ export default function DrInfoCard({item,navigator}) {
               styles?.avatar,
               {backgroundColor: colors?.accent?.shadowColor},
             ]}>
-              <Image source={item?.userImage} resizeMode='contain' style={{width : '100%',height : '100%',borderRadius : 70 / 2}} />
+              <Image source={item?.user?.image} resizeMode='contain' style={{width : '100%',height : '100%',borderRadius : 70 / 2}} />
             </View>
           <Text style={[styles?.votes, {color: colors?.accent?.grey}]}>
             36 votes
@@ -34,7 +32,7 @@ export default function DrInfoCard({item,navigator}) {
         </View>
         <View style={styles?.topRightCardSection}>
           <Text style={[styles?.drName, {color: colors?.accent?.dark}]}>
-            Dr. Jitendra Raut
+            {item?.user?.name}
           </Text>
           <View
             style={[
@@ -88,14 +86,14 @@ export default function DrInfoCard({item,navigator}) {
         <Text style={{color : colors?.secondary?.yellow,fontSize : 17,fontWeight : 'bold'}}>Sponsored</Text>
         </View>
         <Button
-          text="Contact Hospital"
+          text="Preview Doctor"
           buttonColor={colors?.accent?.white}
           buttonTextColor={colors?.primary?.blue}
           buttonVerticalPadding = {8}
           buttonWidth = '55%'
           outlineColor ={colors?.accent?.lightGrey}
           fontSize = {19}
-          handlePress={()=>navigator.navigate('HospitalInfo')}
+          handlePress={()=>navigator.navigate('ProfilePage')}
         />
       </View>
     </View>
@@ -135,11 +133,12 @@ const styles = StyleSheet.create({
 
   topRightCardSection: {
     marginLeft: '5%',
+    flexBasis : '60%'
   },
   drName: {
     fontSize: 20,
     fontWeight: 'bold',
-    marginBottom : '5%'
+    marginBottom : '5%',
   },
   drInfoSection: {
     borderWidth: 1,

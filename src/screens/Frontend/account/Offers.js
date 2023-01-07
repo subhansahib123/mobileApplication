@@ -7,7 +7,7 @@ import OffersCards from './OffersCards';
 import crossIcon from '../../../assets/images/cross.png';
 
 export default function Offers() {
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
 
   return (
     <View

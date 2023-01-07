@@ -17,66 +17,89 @@ import offerIcon from '../../../assets/images/wand.png';
 import giftBox from '../../../assets/images/giftBox.png';
 
 export default function SettingsCard({}) {
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
+  const {isPatient,isDoctor} = useSelector(state => state?.login);
+
   const navigation = useNavigation();
   const DATA = [
     {
       id: 0,
       text: 'My Doctors',
-      iconName: 'bookmark',
       redirecTo: 'My Doctors',
       imagePath: favouriteIcon,
+      isAllowed : true,
     },
     {
       id: 1,
       text: 'Appointments',
-      iconName: 'calendar',
       redirecTo: 'My Doctors',
       imagePath: appointmentIcon,
+      isAllowed : true,
     },
     {
       id: 2,
       text: 'Online Consultation',
-      iconName: 'doctor',
       redirecTo: 'My Doctors',
       imagePath: consulationIcon,
+      isAllowed : true,
     },
     {
       id: 3,
       text: 'Booking History',
-      iconName: 'prescription',
       redirecTo: 'Booking History',
       imagePath: appointmentIcon,
+      isAllowed : true,
     },
     {
       id: 4,
       text: 'Reminders',
-      iconName: 'date',
       redirecTo: 'My Doctors',
       imagePath: watchIcon,
+      isAllowed : true,
     },
     {
       id: 5,
       text: 'Health interest',
-      iconName: 'stethoscope',
       redirecTo: 'My Doctors',
       imagePath: giftBox,
+      isAllowed : true,
     },
     {
       id: 5,
       text: 'My Payments',
-      iconName: 'wallet',
       redirecTo: 'My Payments',
       imagePath: walletIcon,
+      isAllowed : true,
     },
     {
       id: 6,
       text: 'Offers',
-      iconName: 'shopping-package',
-      lastChild: true,
       redirecTo: 'Offers',
       imagePath: offerIcon,
+      isAllowed : true,
     },
+    {
+      id: 7,
+      text: 'Members',
+      redirecTo: 'MembersList',
+      imagePath: offerIcon,
+      isAllowed : isPatient,
+    },
+    {
+      id: 8,
+      text: 'Schedule',
+      redirecTo: 'ScheduleList',
+      imagePath: appointmentIcon,
+      isAllowed : isDoctor,
+    },
+    {
+      id: 9,
+      text: 'Logout',
+      lastChild: true,
+      redirecTo: 'LogOut',
+      isAllowed : true,
+    },
+
   ];
 
   return (
@@ -87,7 +110,7 @@ export default function SettingsCard({}) {
           <Pressable
             onPress={() => navigation.navigate(item?.redirecTo)}
             key={index}>
-            <View style={styles?.routeBox}>
+            <View style={[styles?.routeBox,{display :item?.isAllowed ? 'flex' : 'none'}]}>
               <View style={styles?.leftElement}>
 
                 <Image
@@ -98,7 +121,9 @@ export default function SettingsCard({}) {
                 <Text
                   style={[
                     styles?.routeName,
-                    {color: colors?.accent?.lightDark},
+                    {color: colors?.accent?.lightDark,
+
+                    },
                   ]}>
                   {item?.text}
                 </Text>
@@ -111,13 +136,13 @@ export default function SettingsCard({}) {
                 />
               </View>
             </View>
-            {item?.lastChild ? (
+            {item?.lastChild  ? (
               ''
             ) : (
               <View
                 style={[
                   styles?.horizontalLine,
-                  {borderBottomColor: colors?.accent?.lightGrey},
+                  {borderBottomColor: colors?.accent?.lightGrey,display : item?.isAllowed ? 'flex' : 'none'},
                 ]}></View>
             )}
           </Pressable>

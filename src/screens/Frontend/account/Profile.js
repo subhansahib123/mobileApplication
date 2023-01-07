@@ -7,8 +7,8 @@ import ProfileCard from './ProfileCard';
 import SettingsCard from './SettingsCard';
 import { ScrollView } from 'react-native-gesture-handler';
 
-export default function Profile() {
-  const {colors} = useSelector(state => state);
+export default function Profile({navigation}) {
+  const {colors} = useSelector(state => state?.color);
 
   return (
     <ScrollView
@@ -17,7 +17,7 @@ export default function Profile() {
         {backgroundColor: colors?.accent?.shadowColor},
       ]}>
       <View style={styles?.profileSection}>
-        <ProfileCard />
+        <ProfileCard navigator={navigation}/>
       </View>
       <View style={styles?.routesSection}>
         <SettingsCard />

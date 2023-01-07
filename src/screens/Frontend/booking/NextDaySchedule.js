@@ -10,7 +10,7 @@ import ProfilePic from '../../../assets/images/profile.jpeg';
 import CalendarStrip from 'react-native-calendar-strip';
 
 export default function NextDaySchedule({navigation}) {
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
   const [value, setValue] = useState();
 
   // console.log(Date);

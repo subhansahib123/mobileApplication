@@ -6,8 +6,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 /// Redux
 import {colors} from '../common/Colors';
 import {useDispatch} from 'react-redux';
-import {setColors} from '../store/features/colors/ColorSlice';
-import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome5';
+import {setColors} from "../store/features/colors/colorSlice"
 
 /// Pages
 import StartUp1 from '../screens/Frontend/home/StartUp1';
@@ -20,7 +19,6 @@ import Search from '../screens/Frontend/search/Search';
 import City from '../screens/Frontend/city/City';
 import Language from '../screens/Frontend/lang/Language';
 import Speciality from '../screens/Frontend/specialist/Speciality';
-import HopitalInfoPage from '../screens/Frontend/hospital/HopitalInfoPage';
 import ProfilePage from '../screens/Frontend/drProfile/ProfilePage';
 import BookingReview from '../screens/Frontend/booking/BookingReview';
 import ReviewBooking from '../screens/Frontend/booking/ReviewBooking';
@@ -36,6 +34,15 @@ import Offers from '../screens/Frontend/account/Offers';
 import TimeSlot from '../screens/Frontend/booking/TimeSlot';
 import CurrentDaySchedule from '../screens/Frontend/booking/CurrentDaySchedule';
 import NextDaySchedule from '../screens/Frontend/booking/NextDaySchedule';
+import Logout from '../screens/auth/logout/Logout';
+import MemberList from './../screens/Frontend/patientList/MemberList';
+import CreateMember from '../screens/Frontend/patientList/CreateMember';
+import HospitalInfoPage from './../screens/Frontend/hospital/HospitalInfoPage';
+import UpdateName from '../screens/Frontend/updateProfile/UpdateName';
+import UpdateNumber from '../screens/Frontend/updateProfile/UpdateNumber';
+import SchedulelList from '../screens/Frontend/scheduleList/SchedulelList';
+import CreateSchedule from '../screens/Frontend/scheduleList/CreateSchedule';
+
 const Stack = createNativeStackNavigator();
 
 export default function AppNavigator() {
@@ -81,6 +88,11 @@ export default function AppNavigator() {
           options={{headerShown: false}}
         />
         <Stack.Screen
+          name="LogOut"
+          component={Logout}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
           name="Bottom Tabs"
           component={BottomTabs}
           options={{headerShown: false}}
@@ -107,7 +119,7 @@ export default function AppNavigator() {
         />
         <Stack.Screen
           name="HospitalInfo"
-          component={HopitalInfoPage}
+          component={HospitalInfoPage}
           options={{headerShown: false}}
         />
         <Stack.Screen
@@ -202,6 +214,97 @@ export default function AppNavigator() {
           component={Offers}
           options={{headerShown: false}}
         />
+        <Stack.Screen
+          name="MembersList"
+          component={MemberList}
+          options={{
+            // headerTransparent: true,
+            headerTitleStyle: {
+              color: colors?.primary?.blue,
+              fontSize: 22,
+              fontWeight: 'bold',
+              
+            },
+            headerTitleAlign : 'center',
+            headerTitle : 'Members',
+          }}
+        />
+        <Stack.Screen
+          name="CreateMember"
+          component={CreateMember}
+          options={{
+            // headerTransparent: true,
+            headerTitleStyle: {
+              color: colors?.primary?.blue,
+              fontSize: 22,
+              fontWeight: 'bold',
+              
+            },
+            headerTitleAlign : 'center',
+            headerTitle : 'Patient Details',
+          }}
+        />
+        <Stack.Screen
+          name="ScheduleList"
+          component={SchedulelList}
+          options={{
+            // headerTransparent: true,
+            headerTitleStyle: {
+              color: colors?.primary?.blue,
+              fontSize: 22,
+              fontWeight: 'bold',
+              
+            },
+            headerTitleAlign : 'center',
+            headerTitle : 'Schedules',
+          }}
+        />
+        <Stack.Screen
+          name="CreateSchedule"
+          component={CreateSchedule}
+          options={{
+            // headerTransparent: true,
+            headerTitleStyle: {
+              color: colors?.primary?.blue,
+              fontSize: 22,
+              fontWeight: 'bold',
+              
+            },
+            headerTitleAlign : 'center',
+            headerTitle : 'Schedule Details',
+          }}
+        />
+        <Stack.Screen
+          name="UpdateName"
+          component={UpdateName}
+          options={{
+            // headerTransparent: true,
+            headerTitleStyle: {
+              color: colors?.primary?.blue,
+              fontSize: 22,
+              fontWeight: 'bold',
+              
+            },
+            headerTitleAlign : 'center',
+            headerTitle : 'Update Name',
+          }}
+        />
+        <Stack.Screen
+          name="UpdateNumber"
+          component={UpdateNumber}
+          options={{
+            // headerTransparent: true,
+            headerTitleStyle: {
+              color: colors?.primary?.blue,
+              fontSize: 22,
+              fontWeight: 'bold',
+              
+            },
+            headerTitleAlign : 'center',
+            headerTitle : 'Update Number',
+          }}
+        />
+      
         <Stack.Screen
           name="Time Slot"
           component={TimeSlot}

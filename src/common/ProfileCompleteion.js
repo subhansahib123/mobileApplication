@@ -12,7 +12,7 @@ import {Button, Checkbox} from 'react-native-paper';
 
 export default function ProfileCompleteion(props) {
   const [checked, setChecked] = useState(false);
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
 
   const {
     FirstInputField,

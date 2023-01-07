@@ -16,7 +16,7 @@ import progressBar from '../../../assets/images/Step5.png'
 
 
 export default function AddPayment({navigation}) {
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
 
   return (
     <>

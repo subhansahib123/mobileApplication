@@ -7,7 +7,7 @@ import {useSelector} from 'react-redux';
 
 export default function OtpFields() {
   const [otp, setOtp] = useState('');
-  const {colors} = useSelector(state => state);
+  const {colors} = useSelector(state => state?.color);
 
   return (
     <OTPInputView
