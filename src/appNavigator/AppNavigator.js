@@ -42,6 +42,7 @@ import UpdateName from '../screens/Frontend/updateProfile/UpdateName';
 import UpdateNumber from '../screens/Frontend/updateProfile/UpdateNumber';
 import SchedulelList from '../screens/Frontend/scheduleList/SchedulelList';
 import CreateSchedule from '../screens/Frontend/scheduleList/CreateSchedule';
+import DepartmentPage from './../screens/Frontend/department/DepartmentPage';
 
 const Stack = createNativeStackNavigator();
 
@@ -212,6 +213,11 @@ export default function AppNavigator() {
         <Stack.Screen
           name="Offers"
           component={Offers}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="Department"
+          component={DepartmentPage}
           options={{headerShown: false}}
         />
         <Stack.Screen

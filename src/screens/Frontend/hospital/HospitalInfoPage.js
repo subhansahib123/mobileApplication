@@ -18,15 +18,17 @@ export default function HospitalInfoPage({navigation, route}) {
   const {colors} = useSelector(state => state?.color);
   const {orgId} = route?.params;
 
+  // console.log(orgId);
+
   const [hospitalInfo, setHospitalInfo] = useState({});
   const [departmentInfo, setDepartmentInfo] = useState();
 
   useEffect(() => {
-    fetchHospitalDetails();
+    fetchHospitalList();
   }, []);
 
   /// Fetching Hospitals
-  const fetchHospitalDetails = async () => {
+  const fetchHospitalList = async () => {
     var requestOptions = {
       method: 'GET',
       redirect: 'follow',
@@ -47,14 +49,17 @@ export default function HospitalInfoPage({navigation, route}) {
 
   const handleResponse = response => {
 
-
+    // console.log(response);
     setHospitalInfo(response?.data);
 
-    fetchDepartmentDetails(response?.data?.hospital?.organization_id);
+
+    fetchDepartmentList(response?.data?.departmentSpecializations[0]?.id);
+    // fetchDepartmentList(response?.data?.departmentSpecializations[1]?.id);
+    
   };
 
   /// Fetching Departments
-  const fetchDepartmentDetails = async department_id => {
+  const fetchDepartmentList = async department_id => {
 
 
     let requestOptions = {
@@ -64,7 +69,7 @@ export default function HospitalInfoPage({navigation, route}) {
 
     try {
       await fetch(
-        `http://192.168.0.111:8000/api/department/${department_id}`,
+        `http://192.168.0.111:8000/api/allDepartments/${department_id}`,
         requestOptions,
       )
         .then(response => response.json())
@@ -76,6 +81,7 @@ export default function HospitalInfoPage({navigation, route}) {
   };
 
   const handleDepartmentResponse = response => {
+    // console.log(response);
     setDepartmentInfo(response?.data);
   };
 

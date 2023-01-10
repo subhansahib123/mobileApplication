@@ -30,9 +30,8 @@ export default function HospitalDemoList(props) {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
-  const DATA = organization?.organizations;
+  const DATA = organization;
 
-  var reviewStar = false
 
   const {width, height} = Dimensions.get('screen');
   const ITEM_LENGTH2 = width * 0.39; // Item is a square. Therefore, its height and width are of the same length.

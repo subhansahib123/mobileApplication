@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Image, LogBox} from 'react-native';
 import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import {useSelector} from 'react-redux';
+import { firebase } from '@react-native-firebase/auth';
 
 /// Otp
 import OTPInputView from '@twotalltotems/react-native-otp-input';
@@ -13,18 +14,25 @@ import estericImage from '../../../assets/images/code.png'
 export default function OTP({navigation, route}) {
   const [Otp, setOtp] = useState();
 
-  // const {confirm, phoneNumber} = route.params;
+  useEffect(()=>{
+    
+  },[])
+
+  const {confirm, phoneNumber} = route.params;
   const {colors} = useSelector(state => state?.color);
 
-  // const { hash, otp, message, timeoutError, stopListener, startListener } = useOtpVerify({numberOfDigits: 6});
+  const { hash, otp, message, timeoutError, stopListener, startListener } = useOtpVerify({numberOfDigits: 6});
   // async function confirmCode() {
   //   try {
-  //     // await confirm.confirm(Otp);
+  //     await confirm.confirm(Otp);
   //     console.log('valid code');
   //   } catch (error) {
   //     console.log('Invalid code.');
   //     navigation.navigate('Bottom Tabs')
   //   }
+
+
+
   // }
 
   // useEffect(() => {
@@ -93,8 +101,8 @@ export default function OTP({navigation, route}) {
           <TouchableOpacity
             activeOpacity={0.8}
             style={[styles?.buttonWrapper, {backgroundColor: colors?.primary?.blue}]}
-            // onPress={() => confirmCode()}
-            onPress={() => navigation.navigate('Bottom Tabs')}
+            onPress={() => confirmCode()}
+            // onPress={() => navigation.navigate('Bottom Tabs')}
           >
             <Text style={[styles?.buttonText, {color: colors?.accent?.white}]}>
               Submit
@@ -194,3 +202,5 @@ const styles = StyleSheet.create({
   },
 
 });
+
+

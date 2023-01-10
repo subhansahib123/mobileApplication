@@ -8,17 +8,13 @@ import Button from '../../../common/Button';
 import doctorIcon from '../../../assets/images/doctor.png';
 import locationIcon from '../../../assets/images/location3.png';
 
-export default function DrInfoCard({item,navigator}) {
+export default function InfoCard({navigator,item}) {
   const {colors} = useSelector(state => state?.color);
-
-  // console.log(item?.id);
-
-  // console.log(item);
+  console.log(item);
 
   return (
-
     <View
-      style={[styles?.cardWrapper, {backgroundColor: colors?.accent?.white,}]}>
+      style={[styles?.cardWrapper, {backgroundColor: colors?.accent?.white}]}>
       <View style={styles?.upperContent}>
         <View style={styles?.topLeftCardSection}>
           <View
@@ -26,7 +22,7 @@ export default function DrInfoCard({item,navigator}) {
               styles?.avatar,
               {backgroundColor: colors?.accent?.shadowColor},
             ]}>
-              <Image source={item?.user?.image} resizeMode='contain' style={{width : '100%',height : '100%',borderRadius : 70 / 2}} />
+              <Image  resizeMode='contain' style={{width : '100%',height : '100%',borderRadius : 70 / 2}} />
             </View>
           <Text style={[styles?.votes, {color: colors?.accent?.grey}]}>
             36 votes
@@ -37,20 +33,20 @@ export default function DrInfoCard({item,navigator}) {
         </View>
         <View style={styles?.topRightCardSection}>
           <Text style={[styles?.drName, {color: colors?.accent?.dark}]}>
-            {item?.display_name}
+            {item?.data?.department?.display_name}
           </Text>
           <View
             style={[
               styles?.drInfoSection,
               {borderColor: colors?.accent?.lightGrey},
             ]}>
-            <Text style={{color: colors?.accent?.grey}}>
+            {/* <Text style={{color: colors?.accent?.grey}}>
               B.Sc, MBBS, DDVL, MD{' '}
-            </Text>
+            </Text> */}
             <Text style={{color: colors?.accent?.grey}}>Ophthalmologist</Text>
-            <Text style={{color: colors?.accent?.grey}}>
+            {/* <Text style={{color: colors?.accent?.grey}}>
               26 years of experience
-            </Text>
+            </Text> */}
           </View>
           <View style={styles?.info}>
             <View style={{flexDirection: 'row'}}>
@@ -99,8 +95,8 @@ export default function DrInfoCard({item,navigator}) {
           outlineColor ={colors?.accent?.lightGrey}
           fontSize = {19}
           handlePress={()=>navigator.navigate({
-            name : 'Department',
-            params : {department_id : item?.id}
+            name : 'ProfilePage',
+            params : {doctor_id : item?.data?.doctors[0]?.id}
           })}
         />
       </View>
@@ -116,8 +112,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     paddingTop : '5%',
     elevation : 1,
-    marginTop : '5%',
-    marginBottom : '5%'
   },
   upperContent: {
     flexDirection: 'row',

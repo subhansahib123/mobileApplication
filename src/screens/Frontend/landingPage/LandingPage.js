@@ -34,6 +34,7 @@ export default function LandingPage({navigation}) {
   const [selectedTab, setSelectedTab] = useState('');
   const [active, setActive] = useState();
   const [organization, setOrganization] = useState({});
+  const [specializationList,setSpecializationList] = useState([])
 
   const {width, height} = Dimensions.get('screen');
   const ITEM_LENGTH1 = width * 0.85; // Item is a square. Therefore, its height and width are of the same length.
@@ -68,13 +69,61 @@ export default function LandingPage({navigation}) {
   const handleResponse = response => {
 
     // console.log(response);
-    const data = response?.data;
+    // const data = response?.data;
     
-    setOrganization(data);
-    
+    // setOrganization(data);
+
+    fetchHospitalList()
+    fetchDepartmentSpecialization()
   };
 
+  // console.log(organization);
 
+  const fetchHospitalList = async() => {
+    var requestOptions = {
+  method: 'GET',
+  redirect: 'follow'
+};
+
+try {
+  
+  await fetch("http://192.168.0.111:8000/api/hospitals-list", requestOptions)
+    .then(response => response.json())
+    .then(result => handleHospitalList(result))
+    .catch(error => console.log('error', error));
+} catch (error) {
+    console.error(error);  
+}
+  }
+
+  const handleHospitalList = response => {
+    // console.log(response);
+    const data = response?.data?.organizations?.data;
+    console.log(data);
+    setOrganization(data)
+  };
+
+  const fetchDepartmentSpecialization = async () => {
+    let requestOptions = {
+      method: 'GET',
+      redirect: 'follow'
+    };
+    try {
+      await fetch("http://192.168.0.111:8000/api/department-specializations", requestOptions)
+         .then(response => response.json())
+         .then(result => handleDepartmentSpecializationList(result))
+         .catch(error => console.log('error', error));
+      
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const handleDepartmentSpecializationList = response => {
+    setSpecializationList(response?.data?.departmentSpecializations)
+  }
+
+  // console.log(organization);
   
   return (
     <ScrollView
@@ -111,33 +160,6 @@ export default function LandingPage({navigation}) {
           ]}>
           <Image
             source={active == 1 ? hospitalIconSelected : hospitalIcon}
-            resizeMode="contain"
-            style={{flex: 0.55}}
-          />
-        </Pressable>
-        <Pressable
-          onPress={() => {
-            setSelectedTab('Doctor');
-            setActive(2);
-          }}
-          style={[
-            styles?.iconBox,
-            {
-              backgroundColor:
-                active == 2 ? colors?.primary?.violet : colors?.accent?.white,
-              shadowColor: active == 2 ? colors?.accent?.dark : 'transparent',
-              shadowOffset: {
-                width: active == 2 ? 0 : 0,
-                height: active == 2 ? 12 : 0,
-              },
-              shadowOpacity: active == 2 ? 0.58 : 0,
-              shadowRadius: active == 2 ? 16.0 : 0,
-
-              elevation: active == 2 ? 24 : 0,
-            },
-          ]}>
-          <Image
-            source={active == 2 ? doctorIconSelected : doctorIcon}
             resizeMode="contain"
             style={{flex: 0.55}}
           />
@@ -183,14 +205,6 @@ export default function LandingPage({navigation}) {
         </View>
         <View style={styles?.textSection}>
           <Text style={[styles?.name, {color: colors?.accent?.dark}]}>
-            Department
-          </Text>
-          <Text style={[styles?.info, {color: colors?.accent?.grey}]}>
-            Search Departments
-          </Text>
-        </View>
-        <View style={styles?.textSection}>
-          <Text style={[styles?.name, {color: colors?.accent?.dark}]}>
             Specialization
           </Text>
           <Text style={[styles?.info, {color: colors?.accent?.grey}]}>
@@ -231,11 +245,8 @@ export default function LandingPage({navigation}) {
       {(selectedTab == 'Hospital' && (
         <HospitalDemoList navigator={navigation} organization = {organization}/>
       )) ||
-        (selectedTab == 'Doctor' && (
-          <DoctorDemoList navigator={navigation} organization = {organization}/>
-        )) ||
         (selectedTab == 'Department' && (
-          <DepartmentDemoList navigator={navigation} />
+          <DepartmentDemoList navigator={navigation} specializationList = {specializationList}/>
         )) ||
         (selectedTab == '' && (
           <View style={styles?.sliderSection}>
@@ -277,7 +288,7 @@ const styles = StyleSheet.create({
   iconBoxSection: {
     marginHorizontal: '5%',
     flexDirection: 'row',
-    justifyContent: 'space-around',
+    justifyContent: 'space-between',
     position: 'relative',
     top: -45,
   },

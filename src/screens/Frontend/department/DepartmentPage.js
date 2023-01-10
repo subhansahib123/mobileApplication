@@ -11,15 +11,17 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import AntDesignIcon from 'react-native-vector-icons/AntDesign';
 import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
-import DrInfoCard from './DrInfoCard';
+import InfoCard from './InfoCard';
 
 import {setIsNavigated} from "../../../store/features/login/loginSice"
 
-export default function Speciality({navigation,route}) {
+export default function DepartmentPage({navigation,route}) {
   
 
   const {colors} = useSelector(state => state?.color);
   const {department_id} = route?.params;
+
+  
   const [response,setResponse] = useState()
 
   const dispatch = useDispatch()
@@ -28,25 +30,25 @@ export default function Speciality({navigation,route}) {
   const ITEM_LENGTH1 = width * 0.3; // Item is a square. Therefore, its height and width are of the same length.
   const HEIGHT1 = height * 0.04;
 
-  // const DATA = [
-  //   {id: 0, text: 'Availabilty'},
-  //   {id: 1, text: 'In Hospital'},
-  //   {id: 2, text: 'Online Booking'},
-  //   {id: 3, text: 'Consultation'},
-  // ];
+  const DATA = [
+    {id: 0, text: 'Availabilty'},
+    {id: 1, text: 'In Hospital'},
+    {id: 2, text: 'Online Booking'},
+    {id: 3, text: 'Consultation'},
+  ];
 
   useEffect(()=>{
-      fetchDepartmentsList()
+      fetchDepartmentDetails()
   },[]);
 
-  const fetchDepartmentsList = async () => {
+  const fetchDepartmentDetails = async () => {
     var requestOptions = {
       method: 'GET',
       redirect: 'follow'
     };
     
     try {
-      await  fetch(`http://192.168.0.111:8000/api/allDepartments/${department_id}`, requestOptions)
+      await  fetch(`http://192.168.0.111:8000/api/department/${department_id}`, requestOptions)
           .then(response => response.json())
           .then(result => handleResponse(result))
           .catch(error => console.log('error', error));
@@ -58,11 +60,9 @@ export default function Speciality({navigation,route}) {
 
   const handleResponse = response => {
     setResponse(response)
+    // console.log(response);
   }
 
-  const FlatListData = response?.data?.departments?.department;
-
-  // console.log(FlatListData);
 
   return (
     <View
@@ -93,7 +93,7 @@ export default function Speciality({navigation,route}) {
             />
             </TouchableOpacity>
           <Text style={[styles?.headingText, {color: colors?.accent?.white}]}>
-            {response?.data?.departments?.name}
+            {/* {response?.data?.departments?.name} */}
           </Text>
         </View>
         {/* <Text
@@ -111,42 +111,10 @@ export default function Speciality({navigation,route}) {
           style={{marginRight: 6}}
         /> */}
       </View>
-      {/* <View style={styles?.textPillsWrapper}>
-        <FlatList
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}
-          data={DATA}
-          keyExtractor={item => item.id}
-          renderItem={({item}) => {
-            return (
-              <View
-                style={[
-                  styles?.textPills,
-                  {
-                    backgroundColor: colors?.accent?.white,
-                    width: ITEM_LENGTH1,
-                    height: HEIGHT1,
-                  },
-                ]}>
-                <Text style={[styles?.text, {color: colors?.accent?.dark}]}>
-                  {item.text}
-                </Text>
-              </View>
-            );
-          }}
-        />
-      </View> */}
-      <View style={{backgroundColor: colors?.accent?.shadowColor, flex: 1}}>
-        {/* <DrInfoCard /> */}
+      <View style={{backgroundColor: colors?.accent?.shadowColor,marginTop : '5%'}}>
+        <InfoCard item={response} navigator={navigation}/>
 
-        <FlatList
-          data={FlatListData}
-          keyExtractor={item => item.id}
-          showsVerticalScrollIndicator={false}
-          renderItem={({item}) => {
-            return <DrInfoCard item={item} navigator={navigation} depart_id={response?.data}/>;
-          }}
-        />
+    
       </View>
     </View>
   );
@@ -165,6 +133,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     paddingTop: '7%',
     paddingBottom: '15%',
+    
   },
   headingText: {
     fontSize: 22,

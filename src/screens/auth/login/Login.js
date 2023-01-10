@@ -13,7 +13,7 @@ import PhoneInput from 'react-native-phone-number-input';
 import Button from '../../../common/Button';
 
 /// otp verification
-import auth from '@react-native-firebase/auth';
+import auth, { firebase } from '@react-native-firebase/auth';
 import {useNavigation} from '@react-navigation/native';
 
 ///Image
@@ -53,8 +53,16 @@ export default function Login({}) {
   const navigation = useNavigation();
   const dispatch = useDispatch();
 
+  
+
+  // function onAuthStateChanged (user) {
+  //   console.log(user);
+  // }
+
   useEffect(() => {
     getUser();
+    // const subscriber = auth?.onAuthStateChanged(onAuthStateChanged);
+    // return subscriber;
   }, [userExist]);
 
   async function signInWithPhoneNumber(phoneNumber) {
@@ -80,7 +88,7 @@ export default function Login({}) {
         setConfirm(confirmation);
 
         navigation.navigate({
-          name: 'OTP',
+          name: 'BottomTabs',
           params: {confirm: confirm, phoneNumber: formattedValue},
           merge: true,
         });
@@ -220,7 +228,7 @@ if (data?.user?.doctor != undefined) {
         </Text>
       </View>
       <View>
-        <View style={styles?.selectorBox}>
+        <View style={[styles?.selectorBox]}>
           <Pressable
             style={[
               styles?.selector1,
@@ -315,24 +323,23 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   topSection: {
-    marginTop: '25%',
+    marginTop: '20%',
     marginHorizontal: '8%',
     marginBottom: '15%',
     flexBasis: '20%',
   },
   imagewrapper: {
     alignItems: 'center',
-    flex: 1,
+    flex: .8,
   },
   image: {
     // width : '70%',
     // height : '70%',
-    flex: 0.7,
+    flex: .7,
   },
   topText: {
     textAlign: 'center',
     fontSize: 17,
-    marginBottom: -10,
   },
   selectorBox: {
     borderRadius: 30,
@@ -340,8 +347,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderWidth: 1,
     marginHorizontal: '5%',
-    marginTop: '-10%',
-    marginBottom: '5%',
+    marginTop: '-13%',
+    marginBottom: '11%',
   },
   selector1: {
     paddingVertical: '4%',
